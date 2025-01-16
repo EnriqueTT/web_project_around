@@ -1,0 +1,11 @@
+.elements{
+    display: flex;
+    flex-flow: row wrap;
+    column-gap: 17px ;
+    row-gap: 20px;
+}
+
+.elements_img{
+    width: 282px;
+    height: 361px;
+}
