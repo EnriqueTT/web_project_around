@@ -22,13 +22,26 @@
           <div class="profile__info">
             <h1 class="profile__name">Jacques Cousteau</h1>
             <button class="profile__edit-button"></button>
-            <dialog class="profile__dialog">
-              <h2>Editar perfil</h2>
-              <input type="text" name="name" id="name" />
-              <input type="text" name="about" id="about" />
-              <button class="profile__submit-button">Guardar</button>
+            <dialog class="dialog profile__dialog">
+              <h2 class="dialog__title">Editar perfil</h2>
+
+              <input
+                class="dialog__name"
+                type="text"
+                placeholder="Nombre"
+                name="name"
+              />
+              <input
+                class="dialog__about"
+                type="text"
+                placeholder="Acerca de mí"
+                name="about"
+              />
+              <button class="dialog__submit-button" type="submit">
+                Guardar
+              </button>
             </dialog>
-            <p class="profile__hobby">Explorador</p>
+            <p class="profile__about">Explorador</p>
           </div>
           <button class="profile__add-button">+</button>
         </section>
