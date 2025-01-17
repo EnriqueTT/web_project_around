@@ -1,74 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Jose Enrique Tecuapetla Trejo">
-    <link rel="stylesheet" href="pages/index.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Jose Enrique Tecuapetla Trejo" />
+    <link rel="stylesheet" href="pages/index.css" />
     <title>Around México</title>
-</head>
-<body class="body">
+  </head>
+  <body class="body">
     <div class="page">
-        <header class="header">
+      <header class="header">
+        <img class="header__title" src="images/header.png" alt="title" />
+      </header>
+      <main class="content">
+        <section class="profile">
+          <img
+            class="profile__picture"
+            src="/images/Avatar.png"
+            alt="foto circular de una persona"
+          />
+          <div class="profile__info">
+            <h1 class="profile__name">Jacques Cousteau</h1>
+            <button class="profile__edit-button"></button>
+            <dialog class="profile__dialog">
+              <h2>Editar perfil</h2>
+              <input type="text" name="name" id="name" />
+              <input type="text" name="about" id="about" />
+              <button class="profile__submit-button">Guardar</button>
+            </dialog>
+            <p class="profile__hobby">Explorador</p>
+          </div>
+          <button class="profile__add-button">+</button>
+        </section>
+        <section class="elements">
+          <div class="elements__card">
             <img
-            class="header__title" 
-            src="images/header.png" alt="title">
-        </header>
-        <main class="content">
-            <section class="profile">
-                <img 
-                class="profile__picture"
-                src="/images/Avatar.png" alt="foto circular de una persona">
-                <div class="profile__info">
-                    <h1 class="profile__name">Jacques Cousteau</h1>
-                    <button class="profile__edit-button"></button>
-                    <dialog class="profile__dialog">
-                        <h2>Editar perfil</h2>
-                        <input type="text" name="name" id="name">
-                        <input type="text" name="about" id="about">
-                        <button>Guardar</button>
-                    </dialog>
-                    <p class="profile__hobby">Explorador</p>
-                </div>
-                <button class="profile__add-button">+
-               
-                </button>
-            </section>
-            <section class="elements">
-                <div class="elements__card">
-                    <img
-                    class="elements__img" 
-                    src="images/kirill-pershin-1556355-unsplash.png" alt="imagen de un paisaje">
-                </div>
-                <div class="elements__card">
-                    <img 
-                    class="elements__img" 
-                    src="images/kirill-pershin-1556355-unsplash.png" alt="imagen de un paisaje">
-                </div>
-                <div class="elements__card">
-                    <img 
-                    class="elements__img" 
-                    src="images/kirill-pershin-1556355-unsplash.png" alt="imagen de un paisaje">
-                </div>
-                <div class="elements__card">
-                    <img 
-                    class="elements__img" 
-                    src="images/kirill-pershin-1556355-unsplash.png" alt="imagen de un paisaje">
-                </div>
-                <div class="elements__card">
-                    <img
-                    class="elements__img" 
-                     src="images/kirill-pershin-1556355-unsplash.png" alt="imagen de un paisaje">
-                </div>
-                <div class="elements__card">
-                    <img 
-                    class="elements__img" 
-                    src="images/kirill-pershin-1556355-unsplash.png" alt="imagen de un paisaje">
-                </div>
-            </section>
-        </main>
-        <footer></footer>
+              class="elements__img"
+              src="images/kirill-pershin-1556355-unsplash.png"
+              alt="imagen de un paisaje"
+            />
+          </div>
+          <div class="elements__card">
+            <img
+              class="elements__img"
+              src="images/kirill-pershin-1556355-unsplash.png"
+              alt="imagen de un paisaje"
+            />
+          </div>
+          <div class="elements__card">
+            <img
+              class="elements__img"
+              src="images/kirill-pershin-1556355-unsplash.png"
+              alt="imagen de un paisaje"
+            />
+          </div>
+          <div class="elements__card">
+            <img
+              class="elements__img"
+              src="images/kirill-pershin-1556355-unsplash.png"
+              alt="imagen de un paisaje"
+            />
+          </div>
+          <div class="elements__card">
+            <img
+              class="elements__img"
+              src="images/kirill-pershin-1556355-unsplash.png"
+              alt="imagen de un paisaje"
+            />
+          </div>
+          <div class="elements__card">
+            <img
+              class="elements__img"
+              src="images/kirill-pershin-1556355-unsplash.png"
+              alt="imagen de un paisaje"
+            />
+          </div>
+        </section>
+      </main>
+      <footer></footer>
     </div>
-    <script></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
