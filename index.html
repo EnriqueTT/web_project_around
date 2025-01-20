@@ -19,32 +19,34 @@
             src="/images/Avatar.png"
             alt="foto circular de una persona"
           />
-          <div class="profile__info">
-            <h1 class="profile__name">Jacques Cousteau</h1>
-            <button class="profile__edit-button"></button>
-            <dialog class="dialog profile__dialog">
-              <h2 class="dialog__title">Editar perfil</h2>
-
-              <input
-                class="dialog__name"
-                type="text"
-                placeholder="Nombre"
-                name="name"
-              />
-              <input
-                class="dialog__about"
-                type="text"
-                placeholder="Acerca de mí"
-                name="about"
-              />
-              <button class="dialog__submit-button" type="submit">
-                Guardar
-              </button>
-            </dialog>
-            <p class="profile__about">Explorador</p>
+          <div class="profile-info">
+            <h1 class="profile-info__name">Jacques Cousteau</h1>
+            <button class="profile-info__edit-button"></button>
+            <p class="profile-info__about">Explorador</p>
           </div>
           <button class="profile__add-button">+</button>
         </section>
+        <dialog class="dialog">
+          <!-- <button class="dialog__close-button">x</button> -->
+          <h2 class="dialog__title">Editar perfil</h2>
+          <form class="dialog__form"></form>
+          <input
+            class="dialog__name"
+            type="text"
+            placeholder="Nombre"
+            name="name"
+            aria-label="Nombre"
+          />
+          <input
+            class="dialog__about"
+            type="text"
+            placeholder="Acerca de mí"
+            name="about"
+            aria-label="Acerca de mí"
+          />
+          <button class="dialog__submit-button" type="submit">Guardar</button>
+        </form>
+        </dialog>
         <section class="elements">
           <div class="elements__card">
             <img

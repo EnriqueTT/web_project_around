@@ -9,27 +9,23 @@
   max-height: 120px;
 }
 
-.profile__info {
+.profile-info {
   margin-right: auto;
 }
 
-.profile__name {
+.profile-info__name {
   font-size: 42px;
 }
 
-.profile__edit-button {
+.profile-info__edit-button {
   width: 24px;
   height: 24px;
   background: center no-repeat url("../images/edit_button.png");
   border: 2px solid white;
 }
 
-.profile__about {
+.profile-info__about {
   font-size: 18px;
-}
-
-.profile__dialog::backdrop {
-  background-color: rgba(67, 165, 178, 0.55);
 }
 
 .profile__add-button {
@@ -47,17 +43,7 @@
   transform: scale(1.1);
 }
 
-.profile__edit-button:active {
+.profile-info__edit-button:hover {
   opacity: 50%;
-}
-
-.dialog {
-  max-width: 430px;
-  max-height: 330px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  row-gap: 40px;
+  cursor: pointer;
 }

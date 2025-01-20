@@ -1,16 +1,16 @@
-let editButton = document.querySelector(".profile__edit-button");
-let dialogWindow = document.querySelector(".profile__dialog");
+let editButton = document.querySelector(".profile-info__edit-button");
+let dialogWindow = document.querySelector(".dialog");
 let submitButton = document.querySelector(".dialog__submit-button");
 let formName = document.querySelector(".dialog__name");
 let formAbout = document.querySelector(".dialog__about");
-let name = document.querySelector(".profile__name");
-let about = document.querySelector(".profile__about");
+let name = document.querySelector(".profile-info__name");
+let about = document.querySelector(".profile-info__about");
 
 function enableModal() {
     // formName.value="";   cual es mejor??
     formName.value="";
     formAbout.value="";
-    dialogWindow.setAttribute("open",open);
+    dialogWindow.showModal();
 } 
 function closeModal() {
     console.log(formName.value);
@@ -30,5 +30,5 @@ function closeModal() {
 }
 
 editButton.addEventListener("click",enableModal);
-// editButton.addEventListener("click",()=>{dialogWindow.show();});
+// editButton.addEventListener("click",()=>{dialogWindow.showModal();});
 submitButton.addEventListener("click",closeModal);
