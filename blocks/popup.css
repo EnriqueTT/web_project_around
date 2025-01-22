@@ -1,0 +1,28 @@
+.popup {
+  display: none;
+  position: fixed;
+  border: solid red;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  justify-content: center;
+  align-items: center;
+}
+
+.popup_opened {
+  display: flex;
+}
+
+.popup__close-button {
+  max-width: 40px;
+  max-height: 40px;
+  font-size: 40px;
+  position: absolute; /* Posicionarlo de forma absoluta */
+
+  right: -40px;
+  border: solid; /* 
+  background: none; */
+  cursor: pointer; /* Cambiar el cursor a un puntero */
+}

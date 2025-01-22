@@ -1,0 +1,40 @@
+.form {
+  position: relative; /*Importante para la posición del botón cerrar*/
+  border-radius: 10px;
+  border: solid;
+  max-width: 430px;
+  height: 330px;
+  background-color: #fff;
+}
+
+.form__title {
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: black;
+}
+
+.form__name {
+  padding: 0;
+  font-size: 28px;
+  display: block;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: solid 1px #c4c4c4;
+}
+
+.form__about {
+  padding: 0;
+  font-size: 28px;
+  display: block;
+  margin-bottom: 48px;
+  border: none;
+  border-bottom: solid 1px #c4c4c4;
+}
+
+.form__submit-button {
+  width: 100%;
+  height: 50px;
+  box-shadow: 0px 0px 25px 0px #00000026;
+}

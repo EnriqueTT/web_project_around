@@ -1,34 +1,37 @@
 let editButton = document.querySelector(".profile-info__edit-button");
-let dialogWindow = document.querySelector(".dialog");
-let submitButton = document.querySelector(".dialog__submit-button");
-let formName = document.querySelector(".dialog__name");
-let formAbout = document.querySelector(".dialog__about");
-let name = document.querySelector(".profile-info__name");
-let about = document.querySelector(".profile-info__about");
+let popup = document.querySelector(".popup");
+let form = document.querySelector(".form");
+let formName = document.querySelector(".form__name");
+let formAbout = document.querySelector(".form__about");
+let profileName = document.querySelector(".profile-info__name");
+let profileAbout = document.querySelector(".profile-info__about");
+let popupCloseButton = document.querySelector(".popup__close-button");
 
 function enableModal() {
-    // formName.value="";   cual es mejor??
-    formName.value="";
-    formAbout.value="";
-    dialogWindow.showModal();
+    formName.value=profileName.textContent;
+    formAbout.value=profileAbout.textContent;
+    popup.classList.add("popup_opened");
 } 
-function closeModal() {
+function closeM() {
+  popup.classList.remove("popup_opened");
+}
+function handleFormSubmit(evt) {
+    evt.preventDefault();
     console.log(formName.value);
     // console.log(formName.getAttribute("value"));NO SIRVE PORQUE 
-    // ESTE MÉTODO TRBAJA CON EL DOM
+    // ESTE MÉTODO NO TRBAJA CON EL DOM
     if (formName.value!=""){
-        name.textContent = formName.value;
-        // name.value = formName.value; porque estos tres no funcionan?
-        // console.log(name.value);
-        // console.log(name.textContent)
-        // name.setAttribute("value",formName.textContent);
+        profileName.textContent = formName.value;
+        // profileName.setAttribute("value",formName.value);
     }
     if(formAbout.value!=""){
-        about.textContent=formAbout.value;
+        profileAbout.textContent=formAbout.value;
     }
-    dialogWindow.close();
+    closeM();
 }
 
 editButton.addEventListener("click",enableModal);
-// editButton.addEventListener("click",()=>{dialogWindow.showModal();});
-submitButton.addEventListener("click",closeModal);
+form.addEventListener("submit",handleFormSubmit);
+popupCloseButton.addEventListener("click",function () {
+    closeM();
+});
