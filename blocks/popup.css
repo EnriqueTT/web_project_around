@@ -1,7 +1,6 @@
 .popup {
   display: none;
   position: fixed;
-  border: solid red;
   top: 0;
   left: 0;
   width: 100%;
@@ -16,13 +15,12 @@
 }
 
 .popup__close-button {
-  max-width: 40px;
-  max-height: 40px;
-  font-size: 40px;
+  width: 40px;
+  height: 40px;
+  font-size: 50px;
   position: absolute; /* Posicionarlo de forma absoluta */
-
-  right: -40px;
-  border: solid; /* 
-  background: none; */
-  cursor: pointer; /* Cambiar el cursor a un puntero */
+  top: -50px;
+  right: -50px;
+  /* border: solid;  */
+  cursor: pointer; 
 }
