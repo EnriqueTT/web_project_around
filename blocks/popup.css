@@ -15,12 +15,18 @@
 }
 
 .popup__close-button {
+  margin: 0;
+  padding: 0; 
+  border: none;
   width: 40px;
+  color: white;
   height: 40px;
   font-size: 50px;
   position: absolute; /* Posicionarlo de forma absoluta */
-  top: -50px;
-  right: -50px;
+  top: -45px;
+  right: -35px;
   /* border: solid;  */
   cursor: pointer; 
+  background:none;
+  
 }

@@ -17,7 +17,6 @@ function closeM() {
 }
 function handleFormSubmit(evt) {
     evt.preventDefault();
-    console.log(formName.value);
     // console.log(formName.getAttribute("value"));NO SIRVE PORQUE 
     // ESTE MÉTODO NO TRBAJA CON EL DOM
     if (formName.value!=""){
