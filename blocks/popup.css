@@ -19,8 +19,8 @@
   padding: 0; 
   border: none;
   width: 40px;
-  color: white;
   height: 40px;
+  color: white;
   font-size: 50px;
   position: absolute; /* Posicionarlo de forma absoluta */
   top: -45px;
@@ -28,5 +28,4 @@
   /* border: solid;  */
   cursor: pointer; 
   background:none;
-  
 }

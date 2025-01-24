@@ -1,0 +1,22 @@
+  @font-face {
+    font-family: "Pop";
+    font-style: normal;
+    font-weight: 200;
+    font-display: swap;
+    src: url("./fonts/Poppins-Medium.ttf") format("ttf");
+  }
+  @font-face {
+    font-family: "Pop";
+    font-style: normal;
+    font-weight: bold;
+    font-display: swap;
+    src: url("./fonts/Poppins-Bold.ttf") format("ttf");
+  }
+
+  @font-face {
+    font-family: "Italianoo";
+    font-style: normal;
+    font-weight: bold;
+    font-display: swap;
+    src: url("./fonts/Italianno-Regular.ttf") format("ttf");
+  }
