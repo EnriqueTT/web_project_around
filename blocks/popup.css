@@ -16,7 +16,7 @@
 
 .popup__close-button {
   margin: 0;
-  padding: 0; 
+  padding: 0;
   border: none;
   width: 40px;
   height: 40px;
@@ -26,6 +26,6 @@
   top: -45px;
   right: -35px;
   /* border: solid;  */
-  cursor: pointer; 
-  background:none;
+  cursor: pointer;
+  background: none;
 }
