@@ -26,3 +26,7 @@
   cursor: pointer;
   background: center / contain no-repeat url("../images/Close_Icon.svg");
 }
+
+.popup__close-button:hover {
+  opacity: 50%;
+}

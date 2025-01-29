@@ -54,7 +54,7 @@
 }
 
 .form__submit-button:hover {
-  opacity: 70%;
+  opacity: 50%;
 }
 
 .form__submit-button:active {
