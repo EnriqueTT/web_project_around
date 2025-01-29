@@ -6,6 +6,7 @@ let formAbout = document.querySelector(".form__about");
 let profileName = document.querySelector(".info__name");
 let profileAbout = document.querySelector(".info__about");
 let popupCloseButton = document.querySelector(".popup__close-button");
+let like = document.querySelector(".card__like");
 
 function enableModal() {
     formName.value=profileName.textContent;
@@ -33,4 +34,14 @@ editButton.addEventListener("click",enableModal);
 form.addEventListener("submit",handleFormSubmit);
 popupCloseButton.addEventListener("click",function () {
     closeM();
+});
+like.addEventListener("click", () => {
+    if(like.classList.contains("card__like_black-heart")){
+        like.classList.remove("card__like_black-heart");
+        console.log("quitar");
+    }else{
+        like.classList.add("card__like_black-heart");
+        console.log("añadir");
+    }
+    
 });

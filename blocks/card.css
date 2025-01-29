@@ -37,3 +37,7 @@
   width: 21px;
   height: 19px;
 }
+
+.card__like:hover {
+  opacity: 50%;
+}
