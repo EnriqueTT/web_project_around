@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Jose Enrique Tecuapetla Trejo" />
+    <link rel="shortcut icon" href="/images/Logo.svg" />
     <link rel="stylesheet" href="pages/index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,7 +17,7 @@
   <body class="page">
     <header class="header">
       <h1 class="header__title">Around</h1>
-      <p class="header__subtitle">The U.S.</p>
+      <p class="header__subtitle">The World.</p>
     </header>
     <main class="content">
       <section class="profile">
@@ -25,12 +26,12 @@
           src="/images/Avatar.png"
           alt="foto circular de una persona"
         />
-        <div class="profile-info">
-          <h2 class="profile-info__name">Jacques Cousteau</h2>
-          <button class="profile-info__edit-button"></button>
-          <p class="profile-info__about">Explorador</p>
+        <div class="info profile__info">
+          <h2 class="info__name">Jacques Cousteau</h2>
+          <button class="info__edit-button"></button>
+          <p class="info__about">Explorador</p>
         </div>
-        <button class="profile-info__add-button"></button>
+        <button class="profile__add-button"></button>
       </section>
       <div class="popup">
         <form class="popup__form form">
@@ -53,48 +54,96 @@
           <button class="form__submit-button" type="submit">Guardar</button>
         </form>
       </div>
-      <section class="elements">
-        <div class="elements__card">
+      <section class="places">
+        <div class="card">
           <img
-            class="elements__img"
-            src="images/kirill-pershin-1556355-unsplash.png"
+            class="card__img"
+            src="images/Dos_Aguas.jpeg"
             alt="imagen de un paisaje"
           />
+          <div class="card__bottom">
+            <p class="card__text">Parque Ecoturístico Dos Aguas</p>
+            <img
+              class="card__like"
+              src="/images/Corazon.svg"
+              alt="Logo de corazon"
+            />
+          </div>
         </div>
-        <div class="elements__card">
+        <div class="card">
           <img
-            class="elements__img"
-            src="images/kirill-pershin-1556355-unsplash.png"
+            class="card__img"
+            src="/images/Coliseo.jpg"
             alt="imagen de un paisaje"
           />
+          <div class="card__bottom">
+            <p class="card__text">Coliseo Romano</p>
+            <img
+              class="card__like"
+              src="/images/Corazon.svg"
+              alt="Logo de corazon"
+            />
+          </div>
         </div>
-        <div class="elements__card">
+        <div class="card">
           <img
-            class="elements__img"
-            src="images/kirill-pershin-1556355-unsplash.png"
+            class="card__img"
+            src="images/Machu_Pichu.jpg"
             alt="imagen de un paisaje"
           />
+          <div class="card__bottom">
+            <p class="card__text">Machu Pichu</p>
+            <img
+              class="card__like"
+              src="/images/Corazon.svg"
+              alt="Logo de corazon"
+            />
+          </div>
         </div>
-        <div class="elements__card">
+        <div class="card">
           <img
-            class="elements__img"
-            src="images/kirill-pershin-1556355-unsplash.png"
+            class="card__img"
+            src="/images/Alhambra.jpg"
             alt="imagen de un paisaje"
           />
+          <div class="card__bottom">
+            <p class="card__text">Alhambra</p>
+            <img
+              class="card__like"
+              src="/images/Corazon.svg"
+              alt="Logo de corazon"
+            />
+          </div>
         </div>
-        <div class="elements__card">
+        <div class="card">
           <img
-            class="elements__img"
-            src="images/kirill-pershin-1556355-unsplash.png"
+            class="card__img"
+            src="images/Tikal.jpg"
             alt="imagen de un paisaje"
           />
+          <div class="card__bottom">
+            <p class="card__text">Tikal</p>
+            <img
+              class="card__like"
+              src="/images/Corazon.svg"
+              alt="Logo de corazon"
+            />
+          </div>
         </div>
-        <div class="elements__card">
+        <div class="card">
           <img
-            class="elements__img"
-            src="images/kirill-pershin-1556355-unsplash.png"
+            class="card__img"
+            src="images/Yosmite.png"
             alt="imagen de un paisaje"
           />
+          <div class="card__bottom">
+            <p class="card__text">Valle de Yosemite</p>
+            <img
+              class="card__like"
+              src="/images/Corazon.svg"
+              alt="Logo de corazon"
+            />
+          </div>
         </div>
       </section>
     </main>

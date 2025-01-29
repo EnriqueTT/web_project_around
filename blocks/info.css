@@ -1,0 +1,24 @@
+.info__name {
+  font-size: 42px;
+  font-weight: 500;
+  margin: 0 18px 0 0;
+  display: inline;
+}
+
+.info__edit-button {
+  width: 24px;
+  height: 24px;
+  background: center no-repeat url("../images/edit_button.svg");
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.info__about {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 10px 0 0 0;
+}
+
+.info__edit-button:hover {
+  opacity: 50%;
+}
