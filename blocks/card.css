@@ -41,3 +41,11 @@
 .card__like:hover {
   opacity: 50%;
 }
+
+.card__like:active {
+  transform: scale(1.2);
+}
+
+.card__like_black {
+  background: url("../images/CorazonNegr.svg");
+}
