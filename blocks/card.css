@@ -3,6 +3,7 @@
   height: 361px;
   background-color: aliceblue;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .card__img {
