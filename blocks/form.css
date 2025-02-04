@@ -60,3 +60,19 @@
 .form__submit-button:active {
   transform: scale(1.05);
 }
+
+@media screen and (max-width: 600px) {
+  .form {
+    max-width: 282px;
+    padding: 25px 22px;
+  }
+
+  .form__title {
+    font-size: 18px;
+    margin: 0 0 76px 0;
+  }
+
+  .form__submit-button {
+    font-size: 14px;
+  }
+}
