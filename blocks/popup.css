@@ -21,7 +21,7 @@
   height: 40px;
   position: absolute; /* Posicionarlo de forma absoluta */
   top: -45px;
-  right: 0px;
+  right: -45px;
   /* border: solid 1px white; */
   cursor: pointer;
   background: center / contain no-repeat url("../images/Close_Icon.svg");
@@ -35,5 +35,7 @@
   .popup__close-button {
     width: 26px;
     height: 26px;
+
+    right: 0px;
   }
 }
