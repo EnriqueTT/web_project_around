@@ -9,3 +9,15 @@
   font-weight: 400;
   color: #545454;
 }
+
+@media screen and (max-width: 1024px) {
+  .footer {
+    max-width: 581px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .footer {
+    max-width: 282px;
+  }
+}

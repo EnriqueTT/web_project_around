@@ -22,3 +22,25 @@
 .info__edit-button:hover {
   opacity: 50%;
 }
+
+@media screen and (max-width: 1024px) {
+  .info__name {
+    font-size: 32px;
+  }
+
+  .info__about {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .info__name {
+    font-size: 22px;
+    margin: 0 14px 0 0;
+  }
+
+  .info__about {
+    font-size: 14px;
+    text-align: center;
+  }
+}

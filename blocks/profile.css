@@ -1,7 +1,8 @@
 .profile {
   display: flex;
   flex-flow: row nowrap;
-  margin-bottom: 50px;
+  margin: 0 auto 50px;
+  max-width: 880px;
 }
 
 .profile__picture {
@@ -29,4 +30,36 @@
 
 .profile__add-button:hover {
   opacity: 50%;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile {
+    max-width: 581px;
+  }
+
+  .profile__picture {
+    margin-right: 30px;
+    max-width: 120px;
+    max-height: 120px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile {
+    max-width: 282px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile__info {
+    margin: 0 auto 36px;
+  }
+
+  .profile__picture {
+    margin: 0 0 30px 0;
+  }
+
+  .profile__add-button {
+    width: 100%;
+  }
 }
