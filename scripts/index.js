@@ -1,12 +1,12 @@
-let editButton = document.querySelector(".info__edit-button");
-let popup = document.querySelector(".popup");
-let form = document.querySelector(".form");
-let formName = document.querySelector(".form__name");
-let formAbout = document.querySelector(".form__about");
-let profileName = document.querySelector(".info__name");
-let profileAbout = document.querySelector(".info__about");
-let popupCloseButton = document.querySelector(".popup__close-button");
-let like = document.querySelectorAll(".card__like");
+const editButton = document.querySelector(".info__edit-button");
+const popup = document.querySelector(".popup");
+const form = document.querySelector(".form");
+const formName = document.querySelector(".form__name");
+const formAbout = document.querySelector(".form__about");
+const profileName = document.querySelector(".info__name");
+const profileAbout = document.querySelector(".info__about");
+const popupCloseButton = document.querySelector(".popup__close-button");
+const like = document.querySelectorAll(".card__like");
 
 function enableModal() {
     formName.value=profileName.textContent;
