@@ -53,6 +53,29 @@
           <button class="form__submit-button" type="submit">Guardar</button>
         </form>
       </div>
+      <div class="popup_add popup">
+        <form class="popup__form form add-form">
+          <button class="popup__close-button" type="button"></button>
+          <h2 class="form__title">Nuevo Lugar</h2>
+          <input
+            class="form__name form__input"
+            type="text"
+            placeholder="Título"
+            name="titulo"
+            aria-label="Título"
+          />
+          <input
+            class="form__link form__input"
+            type="text"
+            placeholder="Enlace a la imagen"
+            name="Enlace"
+            aria-label="Enlace a la imagen"
+          />
+          <button class="form__submit-button create-button" type="submit">
+            Crear
+          </button>
+        </form>
+      </div>
       <section class="places">
         <template id="template">
           <div class="card">

@@ -34,6 +34,9 @@
   margin-bottom: 48px;
 }
 
+.form__link {
+  margin-bottom: 48px;
+}
 .form__submit-button {
   width: 100%;
   background: black;
