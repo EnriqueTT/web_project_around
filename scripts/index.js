@@ -68,17 +68,13 @@ popupCloseButtons.forEach((closeButton) => {
     })
 } );
 
-// like.forEach(element => {
-//     element.addEventListener("click", () => {
-//         element.classList.toggle("card__like_black")
-//     });
-// });
 
 function createCard( title , imgURL) {
     if(title !== "" && imgURL !== ""){
         const template = document.querySelector("#template").content;
         const card = template.querySelector(".card").cloneNode(true);
-        card.querySelector(".card__img").src=imgURL;
+        const imgCard = card.querySelector(".card__img");
+        imgCard.src=imgURL;
         card.querySelector(".card__text").textContent = title;
         card.querySelector(".card__like").addEventListener("click",function(evt){
             evt.target.classList.toggle("card__like_black");
@@ -86,6 +82,12 @@ function createCard( title , imgURL) {
         placesContainer.prepend(card);
         card.querySelector(".card__img-trash").addEventListener("click",()=>{
             card.remove();
+        });
+        imgCard.addEventListener("click",()=>{
+            const imgPopUp = document.querySelector(".popup_img");
+            imgPopUp.classList.add("popup_opened");
+            imgPopUp.querySelector("img").src = imgCard.src;
+            imgPopUp.querySelector("p").textContent = imgCard.closest(".card").querySelector("p").textContent; 
         });
     } else{
         alert("campos vacíos");
