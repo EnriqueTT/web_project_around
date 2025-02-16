@@ -8,6 +8,9 @@ La página web de around the world, es el primer proyecto en el que se comienza 
     -Contenedores flex
     -Consultas de medios
     -JavaScript
+        *Eventos
+        *Listas
+        *Manejo del DOM
 
 ## Autor
 
