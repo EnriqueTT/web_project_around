@@ -84,6 +84,9 @@ function createCard( title , imgURL) {
             evt.target.classList.toggle("card__like_black");
         });
         placesContainer.prepend(card);
+        card.querySelector(".card__img-trash").addEventListener("click",()=>{
+            card.remove();
+        });
     } else{
         alert("campos vacíos");
     }
