@@ -107,5 +107,6 @@ addForm.addEventListener("submit",function(evt){
     createCard(formInputs[0].value,formInputs[1].value);
     closeM(addForm.closest(".popup"));
 });
+//console.log(2*Math.pow(10,5));
 // initialCards.forEach(card => createCard(card.link,card.name));
 //https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg
