@@ -37,6 +37,8 @@ const placesContainer = document.querySelector(".places");
 const addButton = document.querySelector(".profile__add-button");
 const addPopUp = document.querySelector(".popup_add");
 const addForm = document.querySelector(".add-form");
+const popups = document.querySelectorAll(".popup");
+
 function enableModal() {
     formName.value=profileName.textContent;
     formAbout.value=profileAbout.textContent;
@@ -115,3 +117,18 @@ addForm.addEventListener("submit",function(evt){
 //console.log(2*Math.pow(10,5));
 // initialCards.forEach(card => createCard(card.link,card.name));
 //https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg
+// document.forms.forEach ( (form) => {
+//   form.addEventListener("click", (evt) => {
+//   if(!evt.target.classList.contains("form") ) {
+//       closeM(evt.target.closest(".popup"));
+//       console.log("click");
+//   }
+// })});
+
+popups.forEach((popup) => {
+  popup.addEventListener("click", function(evt){
+    if( evt.target.classList.contains("popup") ){
+      closeM(popup);
+    }
+  });
+});
