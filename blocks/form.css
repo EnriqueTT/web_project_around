@@ -50,6 +50,10 @@
   transition: opacity 0.5s;
 }
 
+.form__submit-button_gray {
+  background: gray;
+}
+
 .form__input:focus {
   outline-color: rgb(25, 173, 210);
   outline-width: 3px;
