@@ -36,51 +36,74 @@
         <form class="popup__form form" novalidate>
           <button class="popup__close-button" type="button"></button>
           <h2 class="form__title">Editar perfil</h2>
-          <input
-            class="form__name form__input"
-            type="text"
-            placeholder="Nombre"
-            name="name"
-            minlength="3"
-            aria-label="Nombre"
-            required
-          />
-          <input
-            class="form__about form__input"
-            type="text"
-            placeholder="Acerca de mí"
-            name="about"
-            aria-label="Acerca de mí"
-            minlength="3"
-            required
-          />
-          <button class="form__submit-button" type="submit">Guardar</button>
+          <fieldset class="form__fieldset">
+            <label class="form__label">
+              <input
+                class="form__name form__input"
+                id="name"
+                type="text"
+                placeholder="Nombre"
+                name="name"
+                minlength="2"
+                maxlength="40"
+                aria-label="Nombre"
+                required
+              />
+              <span class="form__input-error name__input-error">55</span>
+            </label>
+            <label class="form__label">
+              <input
+                id="about"
+                class="form__about form__input"
+                type="text"
+                placeholder="Acerca de mí"
+                name="about"
+                aria-label="Acerca de mí"
+                minlength="2"
+                maxlength="200"
+                required
+              />
+              <span class="form__input-error about__input-error">3</span>
+            </label>
+            <button class="form__submit-button" type="submit">Guardar</button>
+          </fieldset>
         </form>
       </div>
       <div class="popup_add popup">
         <form class="popup__form form add-form" novalidate>
           <button class="popup__close-button" type="button"></button>
           <h2 class="form__title">Nuevo Lugar</h2>
-          <input
-            class="form__name form__input"
-            type="text"
-            placeholder="Título"
-            minlength="3"
-            name="titulo"
-            aria-label="Título"
-            required
-          />
-          <input
-            class="form__link form__input"
-            type="url"
-            placeholder="Enlace a la imagen"
-            name="Enlace"
-            aria-label="Enlace a la imagen"
-            required
-          />
-          <button class="form__submit-button create-button" type="submit">
-            Crear
-          </button>
+          <fieldset class="form__fieldset">
+            <label class="form__label">
+              <input
+                class="form__name form__input"
+                id="title"
+                type="text"
+                placeholder="Título"
+                minlength="2"
+                maxlength="30"
+                name="titulo"
+                aria-label="Título"
+                required
+              />
+              <span class="form__input-error title__input-error"></span>
+            </label>
+            <label class="form__label">
+              <input
+                class="form__link form__input"
+                type="url"
+                id="link"
+                placeholder="Enlace a la imagen"
+                name="Enlace"
+                aria-label="Enlace a la imagen"
+                required
+              />
+              <span class="form__input-error link__input-error"></span>
+            </label>
+            <button class="form__submit-button create-button" type="submit">
+              Crear
+            </button>
+          </fieldset>
         </form>
       </div>
       <div class="popup_img popup">
@@ -209,6 +232,7 @@
     <footer class="footer">
       <p class="footer__text">&#169; 2025 Around The World.</p>
     </footer>
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>

@@ -1,7 +1,7 @@
 .form {
   position: relative; /*Importante para la posición del botón cerrar*/
   border-radius: 10px;
-  max-width: 430px;
+  width: 430px;
   background-color: #fff;
   padding: 36px;
   box-sizing: border-box;
@@ -9,11 +9,25 @@
   box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.149);
 }
 
+.form__fieldset {
+  border: none;
+  padding: 0;
+}
+
 .form__title {
   font-size: 24px;
   font-weight: 900;
   line-height: 1.2; /* ??? */
   margin: 0 0 54px 0;
+}
+
+.form__label {
+  margin-bottom: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* porque con display flex y flex direction ayudan a que se respete el margen del label
+   pero hace que se vea mas angosto el form */
 }
 
 .form__input {
@@ -26,23 +40,41 @@
   font-weight: 400;
   line-height: 1.2;
 }
-.form__name {
-  margin-bottom: 30px;
+
+.form__input-error_color {
+  border-color: red;
 }
 
+.form__input-error {
+  font-size: 12px;
+  opacity: 0;
+  color: red;
+  position: absolute;
+  top: calc(100% + 6px);
+}
+
+.form__input-error_active {
+  opacity: 1;
+}
+
+/* .form__name {
+  margin-bottom: 30px;
+} */
+
 .form__about {
-  margin-bottom: 48px;
+  /* margin-bottom: 48px; */
 }
 
 .form__link {
-  margin-bottom: 48px;
+  /* margin-bottom: 48px; */
 }
 .form__submit-button {
+  margin-top: 18px;
   width: 100%;
   background: black;
+  box-shadow: none;
   color: white;
   padding: 14px 0;
-  border: none;
   border-radius: 2px;
   font-size: 18px;
   font-weight: 400;
@@ -51,7 +83,8 @@
 }
 
 .form__submit-button_gray {
-  background: gray;
+  background: white;
+  color: gray;
 }
 
 .form__input:focus {

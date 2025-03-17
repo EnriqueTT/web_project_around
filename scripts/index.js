@@ -63,13 +63,6 @@ function handleFormSubmit(evt) {
 
 editButton.addEventListener("click", enableModal);
 form.addEventListener("submit", handleFormSubmit);
-//función para cerrar un popup con el botón de cerrar
-// popupCloseButtons.forEach((closeButton) => {
-//   closeButton.addEventListener("click", function () {
-//     const targetPopup = closeButton.closest(".popup");
-//     closeM(targetPopup);
-//   });
-// });
 
 function removeButtonHandler(card) {
   card.remove();
@@ -122,17 +115,10 @@ addForm.addEventListener("submit", function (evt) {
 //console.log(2*Math.pow(10,5));
 // initialCards.forEach(card => createCard(card.link,card.name));
 //https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg
-// document.forms.forEach ( (form) => {
-//   form.addEventListener("click", (evt) => {
-//   if(!evt.target.classList.contains("form") ) {
-//       closeM(evt.target.closest(".popup"));
-//       console.log("click");
-//   }
-// })});
+
 //Función que cierra el popup con hacer click fuera de el (incluyendo botón x)
 popups.forEach((popup) => {
   popup.addEventListener("click", function (evt) {
-    console.log(evt.target);
     const targetClassList = evt.target.classList;
     if (
       targetClassList.contains("popup") ||
@@ -153,21 +139,4 @@ document.addEventListener("keydown", (evt) => {
   }
 });
 
-// document.forms.forEach((form) => {
-//   form.addEventListener("input", (evt) => {
-//     if (evt.target.classList.contains("form__input")) {
-//       if (!evt.target.validity.valid) {
-//         disableSubmitButton(form.querySelector(".form__submit-button"));
-//       } else {
-//         enableSubmitButton(form.querySelector(".form__submit-button"));
-//       }
-//     }
-//   });
-// });
-
-function disableSubmitButton(button) {
-  button.classList.add("form__submit-button_gray");
-}
-function enableSubmitButton(button) {
-  button.classList.remove("form__submit-button_gray");
-}
+enableValidation();
