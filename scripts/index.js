@@ -145,5 +145,6 @@ document.addEventListener("keydown", (evt) => {
     });
   }
 });
-
-enableValidation();
+document.addEventListener("DOMContentLoaded", () => {
+  enableValidation();
+});
