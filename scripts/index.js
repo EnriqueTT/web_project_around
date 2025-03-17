@@ -80,25 +80,32 @@ function pictureClickHandler(imgCard) {
 }
 
 function createCard(title, imgURL) {
-  if (title !== "" && imgURL !== "") {
-    const template = document.querySelector("#template").content;
-    const card = template.querySelector(".card").cloneNode(true);
-    const imgCard = card.querySelector(".card__img");
-    imgCard.src = imgURL;
-    card.querySelector(".card__text").textContent = title;
-    card
-      .querySelector(".card__like")
-      .addEventListener("click", likeButtonHandler);
-    placesContainer.prepend(card);
-    card
-      .querySelector(".card__img-trash")
-      .addEventListener("click", () => removeButtonHandler(card));
-    imgCard.addEventListener("click", () => pictureClickHandler(imgCard));
-  } else {
-    alert("campos vacíos");
-  }
+  const template = document.querySelector("#template").content;
+  const card = template.querySelector(".card").cloneNode(true);
+  const imgCard = card.querySelector(".card__img");
+  imgCard.src = imgURL;
+  card.querySelector(".card__text").textContent = title;
+  // card
+  //   .querySelector(".card__like")
+  //   .addEventListener("click", likeButtonHandler);
+  placesContainer.prepend(card);
+  // card
+  //   .querySelector(".card__img-trash")
+  //   .addEventListener("click", () => removeButtonHandler(card));
+  // imgCard.addEventListener("click", () => pictureClickHandler(imgCard));
 }
-
+const section = document.querySelector(".places");
+section.addEventListener("click", (evt) => {
+  if (evt.target.classList.contains("card__like")) {
+    likeButtonHandler(evt);
+  }
+  if (evt.target.classList.contains("card__img-trash")) {
+    removeButtonHandler(evt.target.closest(".card"));
+  }
+  if (evt.target.classList.contains("card__img")) {
+    pictureClickHandler(evt.target.closest(".card__img"));
+  }
+});
 initialCards.forEach(({ link, name }) => createCard(name, link));
 addButton.addEventListener("click", function () {
   addPopUp.querySelector(".form__link").value = "";
