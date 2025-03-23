@@ -84,15 +84,9 @@ function createCard(title, imgURL) {
   const card = template.querySelector(".card").cloneNode(true);
   const imgCard = card.querySelector(".card__img");
   imgCard.src = imgURL;
+  imgCard.alt = title;
   card.querySelector(".card__text").textContent = title;
-  // card
-  //   .querySelector(".card__like")
-  //   .addEventListener("click", likeButtonHandler);
   placesContainer.prepend(card);
-  // card
-  //   .querySelector(".card__img-trash")
-  //   .addEventListener("click", () => removeButtonHandler(card));
-  // imgCard.addEventListener("click", () => pictureClickHandler(imgCard));
 }
 const section = document.querySelector(".places");
 section.addEventListener("click", (evt) => {
