@@ -6,6 +6,7 @@ function disableSubmitButton(button) {
   button.classList.add("form__submit-button_gray");
   button.setAttribute("disabled", "");
 }
+
 function enableSubmitButton(button) {
   button.classList.remove("form__submit-button_gray");
   button.removeAttribute("disabled");
@@ -21,6 +22,7 @@ const showInputError = (form, inputsList) => {
     }
   });
 };
+
 const hideInputError = (form, inputsList) => {
   inputsList.forEach((input) => {
     const errorMessage = form.querySelector(`.${input.id}__input-error`);
@@ -31,6 +33,7 @@ const hideInputError = (form, inputsList) => {
     }
   });
 };
+
 const toggleMessage = (form, inputsList) => {
   inputsList.forEach((input) => {
     const errorMessage = form.querySelector(`.${input.id}__input-error`);
@@ -45,17 +48,6 @@ const toggleMessage = (form, inputsList) => {
     }
   });
 };
-const enableValidation = () => {
-  Array.from(document.forms).forEach((form) => {
-    const inputs = Array.from(form.querySelectorAll(".form__input"));
-    disableSubmitButton(form.querySelector(".form__submit-button"));
-
-    form.addEventListener("input", () => {
-      hideInputError(form, inputs);
-      validateInputs(form, inputs);
-    });
-  });
-};
 
 const validateInputs = (form, inputs) => {
   toggleMessage(form, inputs);
@@ -68,13 +60,14 @@ const validateInputs = (form, inputs) => {
   }
 };
 
-// export {
-//   hasInvalidInput,
-//   disableSubmitButton,
-//   enableModal,
-//   showInputError,
-//   hideInputError,
-//   toggleMessage,
-//   enableValidation,
-//   validateInputs,
-// };
+export default () => {
+  Array.from(document.forms).forEach((form) => {
+    const inputs = Array.from(form.querySelectorAll(".form__input"));
+    disableSubmitButton(form.querySelector(".form__submit-button"));
+
+    form.addEventListener("input", () => {
+      hideInputError(form, inputs);
+      validateInputs(form, inputs);
+    });
+  });
+};

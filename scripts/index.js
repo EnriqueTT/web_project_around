@@ -1,14 +1,5 @@
 import Card from "./Card.js";
-// import {
-//   hasInvalidInput,
-//   disableSubmitButton,
-//   enableModal,
-//   showInputError,
-//   hideInputError,
-//   toggleMessage,
-//   enableValidation,
-//   validateInputs,
-// } from "./validate.js";
+import enableValidation from "./validate.js";
 const initialCards = [
   {
     name: "Parque Ecoturístico Dos Aguas",
@@ -147,6 +138,5 @@ document.addEventListener("keydown", (evt) => {
     });
   }
 });
-document.addEventListener("DOMContentLoaded", () => {
-  enableValidation();
-});
+
+enableValidation();
