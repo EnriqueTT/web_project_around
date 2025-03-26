@@ -1,3 +1,14 @@
+import Card from "./Card.js";
+// import {
+//   hasInvalidInput,
+//   disableSubmitButton,
+//   enableModal,
+//   showInputError,
+//   hideInputError,
+//   toggleMessage,
+//   enableValidation,
+//   validateInputs,
+// } from "./validate.js";
 const initialCards = [
   {
     name: "Parque Ecoturístico Dos Aguas",
@@ -79,14 +90,9 @@ function pictureClickHandler(imgCard) {
     .querySelector("p").textContent;
 }
 
-function createCard(title, imgURL) {
-  const template = document.querySelector("#template").content;
-  const card = template.querySelector(".card").cloneNode(true);
-  const imgCard = card.querySelector(".card__img");
-  imgCard.src = imgURL;
-  imgCard.alt = title;
-  card.querySelector(".card__text").textContent = title;
-  placesContainer.prepend(card);
+function addNewCard(title, imgURL) {
+  const card = new Card(title, imgURL, "#card-template");
+  placesContainer.prepend(card.createCard());
 }
 const section = document.querySelector(".places");
 section.addEventListener("click", (evt) => {
@@ -100,7 +106,9 @@ section.addEventListener("click", (evt) => {
     pictureClickHandler(evt.target.closest(".card__img"));
   }
 });
-initialCards.forEach(({ link, name }) => createCard(name, link));
+
+//Renderizado inicial de las 6 cartas
+initialCards.forEach(({ link, name }) => addNewCard(name, link));
 addButton.addEventListener("click", function () {
   addPopUp.querySelector(".form__link").value = "";
   addPopUp.querySelector(".form__name").value = "";

@@ -67,3 +67,14 @@ const validateInputs = (form, inputs) => {
     enableSubmitButton(form.querySelector(".form__submit-button"));
   }
 };
+
+// export {
+//   hasInvalidInput,
+//   disableSubmitButton,
+//   enableModal,
+//   showInputError,
+//   hideInputError,
+//   toggleMessage,
+//   enableValidation,
+//   validateInputs,
+// };

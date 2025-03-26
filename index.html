@@ -117,14 +117,14 @@
         </div>
       </div>
       <section class="places">
-        <template id="template">
+        <template id="card-template">
           <div class="card">
             <img
               class="card__img-trash"
               src="images/Trash.svg"
               alt="Ícono de un bote de basura"
             />
-            <img class="card__img" src="" alt="" />
+            <img class="card__img" src=" " alt=" " />
             <div class="card__bottom">
               <p class="card__text"></p>
               <!-- <input type="checkbox" class="card__like" id="like-1" name="like" value="like-1" /> -->
@@ -233,6 +233,7 @@
       <p class="footer__text">&#169; 2025 Around The World.</p>
     </footer>
     <script src="./scripts/validate.js" defer></script>
-    <script src="./scripts/index.js" defer></script>
+    <script type="module" src="./scripts/Card.js"></script>
+    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>
