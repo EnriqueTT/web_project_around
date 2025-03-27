@@ -62,12 +62,8 @@ addButton.addEventListener("click", function () {
   addPopUp.querySelector(".form__name").value = "";
   utils.openPopup(document.querySelector(".popup_add"));
 });
-form.addEventListener("submit", handleFormSubmit);
 
-function addNewCard(title, imgURL) {
-  const card = new Card(title, imgURL, "#card-template");
-  placesContainer.prepend(card.createCard());
-}
+form.addEventListener("submit", handleFormSubmit);
 
 section.addEventListener("click", (evt) => {
   if (evt.target.classList.contains("card__like")) {
@@ -81,8 +77,16 @@ section.addEventListener("click", (evt) => {
   }
 });
 
+function addNewCard(title, imgURL) {
+  const card = new Card(title, imgURL, "#card-template");
+  placesContainer.prepend(card.createCard());
+}
+
 //Renderizado inicial de las 6 cartas
+//Esto funciona gracias a la destructuración de objetos
+//Se separan las propiedades de los objetos almacenados en la lista
 initialCards.forEach(({ link, name }) => addNewCard(name, link));
+// initialCards.forEach(card => addNewCard(card.name , card.link));
 
 //evt.target es el elemento que activó el evento
 addForm.addEventListener("submit", function (evt) {
@@ -92,7 +96,6 @@ addForm.addEventListener("submit", function (evt) {
   utils.closePopup(addForm.closest(".popup"));
 });
 //console.log(2*Math.pow(10,5));
-// initialCards.forEach(card => createCard(card.link,card.name));
 //https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg
 
 //Función que cierra el popup con hacer click fuera de el (incluyendo botón x)
@@ -107,6 +110,7 @@ popups.forEach((popup) => {
     }
   });
 });
+
 //Función para cerrar con botón Escape
 document.addEventListener("keydown", (evt) => {
   if (evt.key === "Escape") {
