@@ -39,7 +39,6 @@ const addButton = document.querySelector(".profile__add-button");
 const addPopUp = document.querySelector(".popup_add");
 const addForm = document.querySelector(".add-form");
 const popups = document.querySelectorAll(".popup");
-const section = document.querySelector(".places");
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
@@ -65,17 +64,6 @@ addButton.addEventListener("click", function () {
 
 form.addEventListener("submit", handleFormSubmit);
 
-section.addEventListener("click", (evt) => {
-  if (evt.target.classList.contains("card__like")) {
-    utils.likeButtonHandler(evt);
-  }
-  if (evt.target.classList.contains("card__img-trash")) {
-    utils.removeButtonHandler(evt.target.closest(".card"));
-  }
-  if (evt.target.classList.contains("card__img")) {
-    utils.pictureClickHandler(evt.target.closest(".card__img"));
-  }
-});
 
 function addNewCard(title, imgURL) {
   const card = new Card(title, imgURL, "#card-template");
