@@ -28,6 +28,7 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
   },
 ];
+//https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg
 const editButton = document.querySelector(".info__edit-button");
 const form = document.querySelector(".form");
 const formName = document.querySelector(".form__name");
@@ -64,17 +65,16 @@ addButton.addEventListener("click", function () {
 
 form.addEventListener("submit", handleFormSubmit);
 
-
-function addNewCard(title, imgURL) {
-  const card = new Card(title, imgURL, "#card-template");
-  placesContainer.prepend(card.createCard());
-}
-
 //Renderizado inicial de las 6 cartas
 //Esto funciona gracias a la destructuración de objetos
 //Se separan las propiedades de los objetos almacenados en la lista
 initialCards.forEach(({ link, name }) => addNewCard(name, link));
 // initialCards.forEach(card => addNewCard(card.name , card.link));
+
+function addNewCard(title, imgURL) {
+  const card = new Card(title, imgURL, "#card-template");
+  placesContainer.prepend(card.createCard());
+}
 
 //evt.target es el elemento que activó el evento
 addForm.addEventListener("submit", function (evt) {
@@ -83,31 +83,18 @@ addForm.addEventListener("submit", function (evt) {
   addNewCard(formInputs[0].value, formInputs[1].value);
   utils.closePopup(addForm.closest(".popup"));
 });
-//console.log(2*Math.pow(10,5));
-//https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg
 
 //Función que cierra el popup con hacer click fuera de el (incluyendo botón x)
 popups.forEach((popup) => {
-  popup.addEventListener("click", function (evt) {
-    const targetClassList = evt.target.classList;
-    if (
-      targetClassList.contains("popup") ||
-      targetClassList.contains("popup__close-button")
-    ) {
-      utils.closePopup(popup);
-    }
+  popup.addEventListener("click", (evt) => {
+    utils.outsideClickPopupHandler(evt, popup);
   });
 });
+// document.body.addEventListener("click", utils.outsideClick);
 
 //Función para cerrar con botón Escape
-document.addEventListener("keydown", (evt) => {
-  if (evt.key === "Escape") {
-    popups.forEach((popup) => {
-      if (popup.classList.contains("popup_opened")) {
-        popup.classList.remove("popup_opened");
-      }
-    });
-  }
+document.body.addEventListener("keydown", (evt) => {
+  utils.escapeKeydownPopupHandler(evt);
 });
 
 enableValidation();

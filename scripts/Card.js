@@ -39,7 +39,6 @@ export default class Card {
     // evt.target
     //   .closest(".card")
     //   .querySelector(".card__text").textContent;
-
     // img.alt = evt.target.src;
     // img.src = evt.target.alt;
   }
