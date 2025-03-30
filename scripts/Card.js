@@ -18,30 +18,37 @@ export default class Card {
   }
 
   _setEvents() {
-    this._content.querySelector(".card__img-trash").addEventListener("click", this._removeButtonHandler);
-    this._content.querySelector(".card__like").addEventListener("click", this._likeButtonHandler);
-    this._content.querySelector(".card__img").addEventListener("click", this._pictureClickHandler);
+    this._content
+      .querySelector(".card__img-trash")
+      .addEventListener("click", this._removeButtonHandler);
+    this._content
+      .querySelector(".card__like")
+      .addEventListener("click", this._likeButtonHandler);
+    this._content.querySelector(".card__img").addEventListener("click", () => {
+      this._pictureClickHandler();
+    });
   }
-  
- _pictureClickHandler(evt) {
-  const imgPopUp = document.querySelector(".popup_img");
-  imgPopUp.classList.add("popup_opened");
-  const img = imgPopUp.querySelector("img");
-  // img.alt = this._text;
-  // img.src = this._imgSrc;
-  imgPopUp.querySelector("p").textContent = evt.target.closest(".card").querySelector(".card__text").textContent;
-  console.log(evt.target.src);
-  
 
-  img.alt = evt.target.src;
-  img.src = evt.target.alt;
- }
+  _pictureClickHandler() {
+    const imgPopUp = document.querySelector(".popup_img");
+    imgPopUp.classList.add("popup_opened");
+    const img = imgPopUp.querySelector("img");
+    img.alt = this._text;
+    img.src = this._imgSrc;
+    imgPopUp.querySelector("p").textContent = this._text;
+    // evt.target
+    //   .closest(".card")
+    //   .querySelector(".card__text").textContent;
 
- _removeButtonHandler(evt) {
-  evt.target.closest(".card").remove();
- }
+    // img.alt = evt.target.src;
+    // img.src = evt.target.alt;
+  }
 
- _likeButtonHandler(evt) {
-  evt.target.classList.toggle("card__like_black");
- }
+  _removeButtonHandler(evt) {
+    evt.target.closest(".card").remove();
+  }
+
+  _likeButtonHandler(evt) {
+    evt.target.classList.toggle("card__like_black");
+  }
 }
