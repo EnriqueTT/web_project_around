@@ -1,6 +1,6 @@
 import Card from "./Card.js";
-import enableValidation from "./validate.js";
 import * as utils from "./utils.js";
+import FormValidator from "./FormValidator.js";
 
 const initialCards = [
   {
@@ -76,7 +76,6 @@ function addNewCard(title, imgURL) {
   placesContainer.prepend(card.createCard());
 }
 
-//evt.target es el elemento que activó el evento
 addForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
   const formInputs = evt.target.querySelectorAll("input");
@@ -97,4 +96,25 @@ document.body.addEventListener("keydown", (evt) => {
   utils.escapeKeydownPopupHandler(evt);
 });
 
-enableValidation();
+// enableValidation();
+const forms = document.querySelectorAll(".form");
+// Array.from(document.forms).forEach
+forms.forEach((form) => {
+  const relation = !form.classList.contains("add-form")
+    ? { first: profileName, second: profileAbout }
+    : {
+        first: addPopUp.querySelector(".form__link"),
+        second: addPopUp.querySelector(".form__name"),
+      };
+  const obj = {
+    form: form,
+    button: form.querySelector(".form__submit-button"),
+    firstR: relation.first,
+    secondR: relation.second,
+  };
+  const formObject = new FormValidator(
+    obj,
+    !form.classList.contains("add-form")
+  );
+  formObject.enableValidation();
+});
