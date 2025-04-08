@@ -6,6 +6,8 @@ export default class Card {
       .cloneNode(true);
     this._text = text;
     this._imgSrc = img;
+    this._pictureClickHandler=this._pictureClickHandler.bind(this);
+    this._imgPopUp = document.querySelector(".popup_img");
   }
 
   createCard() {
@@ -24,18 +26,21 @@ export default class Card {
     this._content
       .querySelector(".card__like")
       .addEventListener("click", this._likeButtonHandler);
-    this._content.querySelector(".card__img").addEventListener("click", () => {
-      this._pictureClickHandler();
-    });
+    this._content.querySelector(".card__img").addEventListener("click",
+      this._pictureClickHandler );
+    // this._content.querySelector(".card__img")
+    // .addEventListener("click", () => 
+    // { this._pictureClickHandler()}
+    //     );
   }
 
   _pictureClickHandler() {
-    const imgPopUp = document.querySelector(".popup_img");
-    imgPopUp.classList.add("popup_opened");
-    const img = imgPopUp.querySelector("img");
+    
+    this._imgPopUp.classList.add("popup_opened");
+    const img = this._imgPopUp.querySelector("img");
     img.alt = this._text;
     img.src = this._imgSrc;
-    imgPopUp.querySelector("p").textContent = this._text;
+    this._imgPopUp.querySelector("p").textContent = this._text;
     // evt.target
     //   .closest(".card")
     //   .querySelector(".card__text").textContent;
