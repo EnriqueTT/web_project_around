@@ -44,12 +44,12 @@ form.addEventListener("submit", handleFormSubmit);
 //Renderizado inicial de las 6 cartas
 //Esto funciona gracias a la destructuración de objetos
 //Se separan las propiedades de los objetos almacenados en la lista
-initialCards.forEach(({ link, name }) => addNewCard(name, link));
+// initialCards.forEach(({ link, name }) => addNewCard(name, link));
 
-function addNewCard(name, link) {
-  const card = new Card(name, link, "#card-template");
-  placesContainer.prepend(card.createCard());
-}
+// function addNewCard(name, link) {
+//   const card = new Card(name, link, "#card-template");
+//   placesContainer.prepend(card.createCard());
+// }
 
 const sectionCards = new Section(
   {
@@ -72,6 +72,7 @@ addForm.addEventListener("submit", function (evt) {
   utils.closePopup(addForm.closest(".popup"));
 });
 
+////  Popups
 //Función que cierra el popup con hacer click fuera de el (incluyendo botón x)
 popups.forEach((popup) => {
   popup.addEventListener("click", (evt) => {
@@ -85,6 +86,7 @@ document.body.addEventListener("keydown", (evt) => {
   utils.escapeKeydownPopupHandler(evt);
 });
 
+////  Formularios
 // enableValidation();
 const forms = document.querySelectorAll(".form");
 // Array.from(document.forms).forEach

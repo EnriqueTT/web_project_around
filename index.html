@@ -116,27 +116,27 @@
           <p class="popup__description"></p>
         </div>
       </div>
-      <section class="places">
-        <template id="card-template">
-          <div class="card">
+      <template id="card-template">
+        <div class="card">
+          <img
+            class="card__img-trash"
+            src="images/Trash.svg"
+            alt="Ícono de un bote de basura"
+          />
+          <img class="card__img" src=" " alt=" " />
+          <div class="card__bottom">
+            <p class="card__text"></p>
+            <!-- <input type="checkbox" class="card__like" id="like-1" name="like" value="like-1" /> -->
+            <!-- <div class="card__like"></div> -->
             <img
-              class="card__img-trash"
-              src="images/Trash.svg"
-              alt="Ícono de un bote de basura"
+              class="card__like"
+              src="images/Corazon.svg"
+              alt="Logo de corazon"
             />
-            <img class="card__img" src=" " alt=" " />
-            <div class="card__bottom">
-              <p class="card__text"></p>
-              <!-- <input type="checkbox" class="card__like" id="like-1" name="like" value="like-1" /> -->
-              <!-- <div class="card__like"></div> -->
-              <img
-                class="card__like"
-                src="images/Corazon.svg"
-                alt="Logo de corazon"
-              />
-            </div>
           </div>
-        </template>
+        </div>
+      </template>
+      <section class="places">
         <!-- <div class="card">
           <img
             class="card__img"
@@ -232,10 +232,11 @@
     <footer class="footer">
       <p class="footer__text">&#169; 2025 Around The World.</p>
     </footer>
-    <script type="module" src="./components/FormValidator.js"></script>
-    <script type="module" src="./components/Card.js"></script>
-    <script type="module" src="./components/Section.js"></script>
     <script type="module" src="./pages/index.js"></script>
+    <script type="module" src="./components/FormValidator.js"></script>
+    <script type="module" src="./components/Section.js"></script>
+    <script type="module" src="./components/Card.js"></script>
+    <script type="module" src="./components/Popup.js"></script>
     <script type="module" src="./utils/utils.js"></script>
     <script type="module" src="./utils/constants.js"></script>
   </body>
