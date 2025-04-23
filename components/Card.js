@@ -1,8 +1,9 @@
 export default class Card {
   constructor(text, img, templateSelector) {
-    this._content = document.querySelector(templateSelector).content;
-    console.log(this._content);
-    this._card = this._content.cloneNode(true);
+    this._content = document
+      .querySelector(templateSelector)
+      .content.querySelector(".card")
+      .cloneNode(true);
     this._text = text;
     this._imgSrc = img;
     this._pictureClickHandler = this._pictureClickHandler.bind(this);
@@ -10,7 +11,7 @@ export default class Card {
   }
 
   createCard() {
-    const card__img = this._card.querySelector(".card__img");
+    const card__img = this._content.querySelector(".card__img");
     card__img.src = this._imgSrc;
     card__img.alt = this._text;
     this._content.querySelector(".card__text").textContent = this._text;
