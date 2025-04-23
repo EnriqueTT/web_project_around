@@ -6,7 +6,7 @@ export default class Card {
       .cloneNode(true);
     this._text = text;
     this._imgSrc = img;
-    this._pictureClickHandler=this._pictureClickHandler.bind(this);
+    this._pictureClickHandler = this._pictureClickHandler.bind(this);
     this._imgPopUp = document.querySelector(".popup_img");
   }
 
@@ -26,16 +26,16 @@ export default class Card {
     this._content
       .querySelector(".card__like")
       .addEventListener("click", this._likeButtonHandler);
-    this._content.querySelector(".card__img").addEventListener("click",
-      this._pictureClickHandler );
+    this._content
+      .querySelector(".card__img")
+      .addEventListener("click", this._pictureClickHandler);
     // this._content.querySelector(".card__img")
-    // .addEventListener("click", () => 
+    // .addEventListener("click", () =>
     // { this._pictureClickHandler()}
     //     );
   }
 
   _pictureClickHandler() {
-    
     this._imgPopUp.classList.add("popup_opened");
     const img = this._imgPopUp.querySelector("img");
     img.alt = this._text;
