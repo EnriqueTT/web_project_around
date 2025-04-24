@@ -7,13 +7,13 @@ export function closePopup(popup) {
 }
 
 export function outsideClickPopupHandler(evt, popup) {
-  const targetClassList = evt.target.classList;
-  if (
-    targetClassList.contains("popup") ||
-    targetClassList.contains("popup__close-button")
-  ) {
-    closePopup(popup);
-  }
+  // const targetClassList = evt.target.classList;
+  // if (
+  // targetClassList.contains("popup") ||
+  // targetClassList.contains("popup__close-button")
+  // ) {
+  closePopup(popup);
+  // }
 }
 
 export function escapeKeydownPopupHandler(evt) {

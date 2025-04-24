@@ -26,3 +26,4 @@ export const initialCards = [
 ];
 
 export const placesContainerSelector = ".places";
+export const cardTemplate = "#card-template";

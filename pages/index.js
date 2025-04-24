@@ -1,8 +1,13 @@
 import Card from "../components/Card.js";
 import * as utils from "../utils/utils.js";
 import FormValidator from "../components/FormValidator.js";
-import { initialCards, placesContainerSelector } from "../utils/constants.js";
+import {
+  initialCards,
+  placesContainerSelector,
+  cardTemplate,
+} from "../utils/constants.js";
 import Section from "../components/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 
 //https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg
 const editButton = document.querySelector(".info__edit-button");
@@ -11,7 +16,6 @@ const formName = document.querySelector(".form__name");
 const formAbout = document.querySelector(".form__about");
 const profileName = document.querySelector(".info__name");
 const profileAbout = document.querySelector(".info__about");
-const placesContainer = document.querySelector(".places");
 const addButton = document.querySelector(".profile__add-button");
 const addPopUp = document.querySelector(".popup_add");
 const addForm = document.querySelector(".add-form");
@@ -42,20 +46,22 @@ addButton.addEventListener("click", function () {
 form.addEventListener("submit", handleFormSubmit);
 
 //Renderizado inicial de las 6 cartas
-//Esto funciona gracias a la destructuración de objetos
-//Se separan las propiedades de los objetos almacenados en la lista
-// initialCards.forEach(({ link, name }) => addNewCard(name, link));
-
-// function addNewCard(name, link) {
-//   const card = new Card(name, link, "#card-template");
-//   placesContainer.prepend(card.createCard());
-// }
-
 const sectionCards = new Section(
   {
     items: initialCards,
     renderer: ({ name, link }) => {
-      const card = new Card(name, link, "#card-template");
+      const card = new Card(
+        {
+          name,
+          link,
+          handleCardClick: (item) => {
+            //new popupoWithImage
+            const picturePopup = new PopupWithImage(".popup_img");
+            picturePopup.open(item);
+          },
+        },
+        cardTemplate
+      );
       const cardElement = card.createCard();
       sectionCards.addItem(cardElement);
     },
@@ -63,7 +69,6 @@ const sectionCards = new Section(
   placesContainerSelector
 );
 sectionCards.renderItems();
-// sectionCards.clear();
 
 addForm.addEventListener("submit", function (evt) {
   evt.preventDefault();

@@ -1,4 +1,4 @@
-import Popup from "./Popup";
+import Popup from "./Popup.js";
 
 export default class PopupWithImage extends Popup {
   constructor(selector) {
@@ -6,8 +6,13 @@ export default class PopupWithImage extends Popup {
   }
 
   //overwrite
-  open() {
+  open({ name, link }) {
     super.open();
     //añadir imagen y src del popup
+    console.log("abre desde poupupwithimgh");
+    const img = this._popupElement.querySelector("img");
+    img.alt = name;
+    img.src = link;
+    this._popupElement.querySelector("p").textContent = name;
   }
 }
