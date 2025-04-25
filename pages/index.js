@@ -19,7 +19,6 @@ const profileAbout = document.querySelector(".info__about");
 const addButton = document.querySelector(".profile__add-button");
 const addPopUp = document.querySelector(".popup_add");
 const addForm = document.querySelector(".add-form");
-const popups = document.querySelectorAll(".popup"); //eliminar
 
 function handleFormSubmit(evt) {
   evt.preventDefault();

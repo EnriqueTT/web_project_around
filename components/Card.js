@@ -7,6 +7,7 @@ export default class Card {
     this._text = name;
     this._imgSrc = link;
     this._handleCardClick = handleCardClick;
+    this._pictureHandler = this._pictureHandler.bind(this);
   }
 
   createCard() {
@@ -25,9 +26,13 @@ export default class Card {
     this._content
       .querySelector(".card__like")
       .addEventListener("click", this._likeButtonHandler);
-    this._content.querySelector(".card__img").addEventListener("click", () => {
-      this._handleCardClick({ name: this._text, link: this._imgSrc });
-    });
+    this._content
+      .querySelector(".card__img")
+      .addEventListener("click", this._pictureHandler);
+  }
+
+  _pictureHandler() {
+    this._handleCardClick({ name: this._text, link: this._imgSrc });
   }
 
   _removeButtonHandler(evt) {
