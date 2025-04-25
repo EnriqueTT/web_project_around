@@ -15,8 +15,10 @@ export default class Popup {
   }
 
   _handleEscClose(evt) {
-    const openedClass = this._popupElement.contains("popup_opened");
-    if (evt.key === "Escape" && openedClass) {
+    //porque sin esta línea si funciona?
+    // const openedClass = this._popupElement.contains("popup_opened");
+    // if (evt.key === "Escape" && openedClass) {
+    if (evt.key === "Escape") {
       this.close();
       console.log("cierra esc");
     }
@@ -24,8 +26,10 @@ export default class Popup {
 
   setEventListeners() {
     //agrega detector de clicks para cerrar
-    this._popupElement.addEventListener("click", () =>{ this.close() });
-    document.body.addEventListener("keydown", (evt) =>{ 
+    this._popupElement.addEventListener("click", () => {
+      this.close();
+    });
+    document.body.addEventListener("keydown", (evt) => {
       this._handleEscClose(evt);
     });
   }

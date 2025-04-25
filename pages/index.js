@@ -19,7 +19,7 @@ const profileAbout = document.querySelector(".info__about");
 const addButton = document.querySelector(".profile__add-button");
 const addPopUp = document.querySelector(".popup_add");
 const addForm = document.querySelector(".add-form");
-const popups = document.querySelectorAll(".popup");
+const popups = document.querySelectorAll(".popup"); //eliminar
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
@@ -55,7 +55,6 @@ const sectionCards = new Section(
           name,
           link,
           handleCardClick: (item) => {
-            
             picturePopup.open(item);
           },
         },
@@ -77,18 +76,11 @@ addForm.addEventListener("submit", function (evt) {
 });
 
 ////  Popups
-//Función que cierra el popup con hacer click fuera de el (incluyendo botón x)
-// popups.forEach((popup) => {
-//   popup.addEventListener("click", (evt) => {
-//     utils.outsideClickPopupHandler(evt, popup);
-//   });
-// });
-// document.body.addEventListener("click", utils.outsideClick);
 
 //Función para cerrar con botón Escape
-// document.body.addEventListener("keydown", (evt) => {
-//   utils.escapeKeydownPopupHandler(evt);
-// });
+// // document.body.addEventListener("keydown", (evt) => {
+// //   utils.escapeKeydownPopupHandler(evt);
+// // });
 
 ////  Formularios
 // enableValidation();
