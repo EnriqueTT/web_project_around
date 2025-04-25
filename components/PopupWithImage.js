@@ -8,8 +8,6 @@ export default class PopupWithImage extends Popup {
   //overwrite
   open({ name, link }) {
     super.open();
-    //añadir imagen y src del popup
-    console.log("abre desde poupupwithimgh");
     const img = this._popupElement.querySelector("img");
     img.alt = name;
     img.src = link;

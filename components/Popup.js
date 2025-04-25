@@ -3,6 +3,7 @@ export default class Popup {
     //".popup"
     this._popupElement = document.querySelector(popupSelector);
     // this._handleEscClose = this._handleEscClose.bind(this);
+    this.setEventListeners();
   }
 
   open() {
@@ -14,23 +15,18 @@ export default class Popup {
   }
 
   _handleEscClose(evt) {
-    // const openedPopup = document.kkuerySelector(".popup_opened");
-    if (evt.key === "Escape" && this._popupElement.contains("popup_opened")) {
+    const openedClass = this._popupElement.contains("popup_opened");
+    if (evt.key === "Escape" && openedClass) {
       this.close();
+      console.log("cierra esc");
     }
   }
 
   setEventListeners() {
     //agrega detector de clicks para cerrar
-    this._popupElement.addEventListener("click", () => {
-      // const targetClassList = evt.target.classList;
-      // if (
-      //   targetClassList.contains("popup") ||
-      //   targetClassList.contains("popup__close-button")
-      // ) {
-      this.close();
-      // }
+    this._popupElement.addEventListener("click", () =>{ this.close() });
+    document.body.addEventListener("keydown", (evt) =>{ 
+      this._handleEscClose(evt);
     });
-    document.body.addEventListener("keydown", this._handleEscClose);
   }
 }

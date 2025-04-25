@@ -6,7 +6,7 @@ export function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
 
-export function outsideClickPopupHandler(evt, popup) {
+export function outsideClickPopupHandler(popup) {
   // const targetClassList = evt.target.classList;
   // if (
   // targetClassList.contains("popup") ||

@@ -44,7 +44,7 @@ addButton.addEventListener("click", function () {
 });
 
 form.addEventListener("submit", handleFormSubmit);
-
+const picturePopup = new PopupWithImage(".popup_img");
 //Renderizado inicial de las 6 cartas
 const sectionCards = new Section(
   {
@@ -55,8 +55,7 @@ const sectionCards = new Section(
           name,
           link,
           handleCardClick: (item) => {
-            //new popupoWithImage
-            const picturePopup = new PopupWithImage(".popup_img");
+            
             picturePopup.open(item);
           },
         },
@@ -79,17 +78,17 @@ addForm.addEventListener("submit", function (evt) {
 
 ////  Popups
 //Función que cierra el popup con hacer click fuera de el (incluyendo botón x)
-popups.forEach((popup) => {
-  popup.addEventListener("click", (evt) => {
-    utils.outsideClickPopupHandler(evt, popup);
-  });
-});
+// popups.forEach((popup) => {
+//   popup.addEventListener("click", (evt) => {
+//     utils.outsideClickPopupHandler(evt, popup);
+//   });
+// });
 // document.body.addEventListener("click", utils.outsideClick);
 
 //Función para cerrar con botón Escape
-document.body.addEventListener("keydown", (evt) => {
-  utils.escapeKeydownPopupHandler(evt);
-});
+// document.body.addEventListener("keydown", (evt) => {
+//   utils.escapeKeydownPopupHandler(evt);
+// });
 
 ////  Formularios
 // enableValidation();
