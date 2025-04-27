@@ -8,6 +8,7 @@ import {
 } from "../utils/constants.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 
 //https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg
 const editButton = document.querySelector(".info__edit-button");
@@ -36,13 +37,26 @@ editButton.addEventListener("click", () => {
   utils.openPopup(document.querySelector(".popup"));
 });
 
-addButton.addEventListener("click", function () {
-  addPopUp.querySelector(".form__link").value = "";
-  addPopUp.querySelector(".form__name").value = "";
-  utils.openPopup(document.querySelector(".popup_add"));
+addForm.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+  const formInputs = evt.target.querySelectorAll("input");
+  // addNewCard(formInputs[0].value, formInputs[1].value);
+  // utils.closePopup(addForm.closest(".popup"));
 });
 
 form.addEventListener("submit", handleFormSubmit);
+
+//funcion handler envía el formulario
+const addCardPopup = new PopupWithForm({ handler: () => {} }, ".popup_add");
+
+addButton.addEventListener("click", function () {
+  // addPopUp.querySelector(".form__link").value = "";
+  // addPopUp.querySelector(".form__name").value = "";
+  addCardPopup.open();
+});
+// const profileEditForm = new PopupWithForm({handler : () => {
+// }}, ".popup");
+
 const picturePopup = new PopupWithImage(".popup_img");
 //Renderizado inicial de las 6 cartas
 const sectionCards = new Section(
@@ -66,13 +80,6 @@ const sectionCards = new Section(
   placesContainerSelector
 );
 sectionCards.renderItems();
-
-addForm.addEventListener("submit", function (evt) {
-  evt.preventDefault();
-  const formInputs = evt.target.querySelectorAll("input");
-  addNewCard(formInputs[0].value, formInputs[1].value);
-  utils.closePopup(addForm.closest(".popup"));
-});
 
 ////  Popups
 

@@ -9,10 +9,15 @@ export default class Popup {
 
   open() {
     this._popupElement.classList.add("popup_opened");
+    document.body.addEventListener("keydown", this._handleEscClose);
   }
 
   close() {
-    this._popupElement.classList.remove("popup_opened");
+    const isOpened = this._popupElement.classList.contains("popup_opened");
+    if (isOpened) {
+      document.body.removeEventListener("keydown", this._handleEscClose);
+      this._popupElement.classList.remove("popup_opened");
+    }
   }
 
   _handleEscClose(evt) {
@@ -26,6 +31,5 @@ export default class Popup {
   setEventListeners() {
     //agrega detector de clicks para cerrar
     this._popupElement.addEventListener("click", this.close);
-    document.body.addEventListener("keydown", this._handleEscClose);
   }
 }
