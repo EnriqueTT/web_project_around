@@ -6,7 +6,7 @@ import {
   placesContainerSelector,
   cardTemplate,
 } from "../utils/constants.js";
-import Section from "../components/Section.js";
+import Section from "../layers/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 
@@ -47,35 +47,53 @@ addForm.addEventListener("submit", function (evt) {
 form.addEventListener("submit", handleFormSubmit);
 
 //funcion handler envía el formulario
-const addCardPopup = new PopupWithForm({ handler: () => {} }, ".popup_add");
+const addCardPopup = new PopupWithForm(
+  {
+    handler: () => {
+      const inputs = addCardPopup._getInputValues();
+      const newCard = new Card(
+        { name: inputs[0], link: inputs[1], handleCardClick },
+        cardTemplate
+      );
+      sectionCards.addItem(newCard.createCard());
+    },
+  },
+  ".popup_add"
+);
 
 addButton.addEventListener("click", function () {
   // addPopUp.querySelector(".form__link").value = "";
   // addPopUp.querySelector(".form__name").value = "";
   addCardPopup.open();
+  addCardPopup._getInputValues();
 });
+
 // const profileEditForm = new PopupWithForm({handler : () => {
 // }}, ".popup");
+
+const handleCardClick = (item) => {
+  picturePopup.open(item);
+};
+
+const renderer = ({ name, link }) => {
+  const card = new Card(
+    {
+      name,
+      link,
+      handleCardClick,
+    },
+    cardTemplate
+  );
+  const cardElement = card.createCard();
+  sectionCards.addItem(cardElement);
+};
 
 const picturePopup = new PopupWithImage(".popup_img");
 //Renderizado inicial de las 6 cartas
 const sectionCards = new Section(
   {
     items: initialCards,
-    renderer: ({ name, link }) => {
-      const card = new Card(
-        {
-          name,
-          link,
-          handleCardClick: (item) => {
-            picturePopup.open(item);
-          },
-        },
-        cardTemplate
-      );
-      const cardElement = card.createCard();
-      sectionCards.addItem(cardElement);
-    },
+    renderer,
   },
   placesContainerSelector
 );
