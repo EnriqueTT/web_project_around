@@ -21,6 +21,52 @@ const addButton = document.querySelector(".profile__add-button");
 const addPopUp = document.querySelector(".popup_add");
 const addForm = document.querySelector(".add-form");
 
+const picturePopup = new PopupWithImage(".popup_img"); //agregar a constantes
+//Renderizado inicial de las 6 cartas
+const sectionCards = new Section(
+  {
+    items: initialCards,
+    renderer,
+  },
+  placesContainerSelector
+);
+sectionCards.renderItems();
+
+function renderer({ name, link }) {
+  const card = new Card(
+    {
+      name,
+      link,
+      handleCardClick,
+    },
+    cardTemplate
+  );
+  const cardElement = card.createCard();
+  sectionCards.addItem(cardElement);
+}
+
+function handleCardClick(item) {
+  picturePopup.open(item);
+}
+
+// Formulario de cartas
+const addCardPopup = new PopupWithForm(
+  {
+    handler: () => {
+      const inputs = addCardPopup._getInputValues();
+      const newCard = new Card(
+        { name: inputs[0].value, link: inputs[1].value, handleCardClick },
+        cardTemplate
+      );
+      sectionCards.addItem(newCard.createCard());
+    },
+  },
+  ".popup_add"
+);
+
+// Editor de perfil
+//.....
+
 function handleFormSubmit(evt) {
   evt.preventDefault();
   // console.log(formName.getAttribute("value"));NO SIRVE PORQUE
@@ -47,19 +93,6 @@ addForm.addEventListener("submit", function (evt) {
 form.addEventListener("submit", handleFormSubmit);
 
 //funcion handler envía el formulario
-const addCardPopup = new PopupWithForm(
-  {
-    handler: () => {
-      const inputs = addCardPopup._getInputValues();
-      const newCard = new Card(
-        { name: inputs[0], link: inputs[1], handleCardClick },
-        cardTemplate
-      );
-      sectionCards.addItem(newCard.createCard());
-    },
-  },
-  ".popup_add"
-);
 
 addButton.addEventListener("click", function () {
   // addPopUp.querySelector(".form__link").value = "";
@@ -70,36 +103,6 @@ addButton.addEventListener("click", function () {
 
 // const profileEditForm = new PopupWithForm({handler : () => {
 // }}, ".popup");
-
-const handleCardClick = (item) => {
-  picturePopup.open(item);
-};
-
-const renderer = ({ name, link }) => {
-  const card = new Card(
-    {
-      name,
-      link,
-      handleCardClick,
-    },
-    cardTemplate
-  );
-  const cardElement = card.createCard();
-  sectionCards.addItem(cardElement);
-};
-
-const picturePopup = new PopupWithImage(".popup_img");
-//Renderizado inicial de las 6 cartas
-const sectionCards = new Section(
-  {
-    items: initialCards,
-    renderer,
-  },
-  placesContainerSelector
-);
-sectionCards.renderItems();
-
-////  Popups
 
 //Función para cerrar con botón Escape
 // // document.body.addEventListener("keydown", (evt) => {
