@@ -27,3 +27,5 @@ export const initialCards = [
 
 export const placesContainerSelector = ".places";
 export const cardTemplate = "#card-template";
+export const addPopupSelector = ".popup_add";
+export const imgPopupSelector = ".popup_img";

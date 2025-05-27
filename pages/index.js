@@ -5,6 +5,8 @@ import {
   initialCards,
   placesContainerSelector,
   cardTemplate,
+  addPopupSelector,
+  imgPopupSelector,
 } from "../utils/constants.js";
 import Section from "../layers/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -21,7 +23,7 @@ const addButton = document.querySelector(".profile__add-button");
 const addPopUp = document.querySelector(".popup_add");
 const addForm = document.querySelector(".add-form");
 
-const picturePopup = new PopupWithImage(".popup_img"); //agregar a constantes
+const picturePopup = new PopupWithImage(imgPopupSelector);
 //Renderizado inicial de las 6 cartas
 const sectionCards = new Section(
   {
@@ -61,7 +63,7 @@ const addCardPopup = new PopupWithForm(
       sectionCards.addItem(newCard.createCard());
     },
   },
-  ".popup_add"
+  addPopupSelector
 );
 
 // Editor de perfil
@@ -103,11 +105,6 @@ addButton.addEventListener("click", function () {
 
 // const profileEditForm = new PopupWithForm({handler : () => {
 // }}, ".popup");
-
-//Función para cerrar con botón Escape
-// // document.body.addEventListener("keydown", (evt) => {
-// //   utils.escapeKeydownPopupHandler(evt);
-// // });
 
 ////  Formularios
 // enableValidation();
