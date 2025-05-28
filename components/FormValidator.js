@@ -96,7 +96,7 @@ export default class FormValidator {
   _toggleMessage() {
     this._inputs.forEach((input) => {
       const errorMessage = this._structure.querySelector(
-        `.${input.id}__input-error`
+        `#${input.id}__input-error`
       );
       if (!input.validity.valid) {
         input.classList.add("form__input-error_color");
