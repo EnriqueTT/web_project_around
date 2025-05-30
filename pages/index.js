@@ -10,6 +10,7 @@ import {
   profileFormSelector,
   userNameSelector,
   userAboutSelector,
+  userAvatarSelector,
 } from "../utils/constants.js";
 import Section from "../layers/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -23,6 +24,17 @@ const profileAbout = document.querySelector(".info__about");
 const addButton = document.querySelector(".profile__add-button");
 const addPopUp = document.querySelector(".popup_add");
 const addForm = document.querySelector(".add-form");
+
+fetch("https://around-api.es.tripleten-services.com/v1/users/me", {
+  headers: {
+    authorization: "4d007ff4-1f4e-4b6a-9dba-c0d8b800d5cd",
+  },
+})
+  .then((res) => res.json())
+  .then((result) => {
+    userInfo.setUserInfo(result.name, result.about);
+    userInfo.setAvatar(result.avatar);
+  });
 
 const picturePopup = new PopupWithImage(imgPopupSelector);
 //Renderizado inicial de las 6 cartas
@@ -71,6 +83,7 @@ const addCardPopup = new PopupWithForm(
 const userInfo = new UserInfo({
   name: userNameSelector,
   job: userAboutSelector,
+  avatar: userAvatarSelector,
 });
 const profilePopup = new PopupWithForm(
   {

@@ -34,3 +34,4 @@ export const formNameSelector = ".form__name";
 export const formAboutSelector = ".form__about";
 export const userNameSelector = ".info__name";
 export const userAboutSelector = ".info__about";
+export const userAvatarSelector = ".profile__picture";
