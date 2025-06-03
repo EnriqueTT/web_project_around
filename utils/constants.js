@@ -35,3 +35,4 @@ export const formAboutSelector = ".form__about";
 export const userNameSelector = ".info__name";
 export const userAboutSelector = ".info__about";
 export const userAvatarSelector = ".profile__picture";
+export const token = "4d007ff4-1f4e-4b6a-9dba-c0d8b800d5cd";

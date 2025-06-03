@@ -11,6 +11,7 @@ import {
   userNameSelector,
   userAboutSelector,
   userAvatarSelector,
+  token,
 } from "../utils/constants.js";
 import Section from "../layers/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -27,7 +28,7 @@ const addForm = document.querySelector(".add-form");
 
 fetch("https://around-api.es.tripleten-services.com/v1/users/me", {
   headers: {
-    authorization: "4d007ff4-1f4e-4b6a-9dba-c0d8b800d5cd",
+    authorization: token,
   },
 })
   .then((res) => res.json())
@@ -36,16 +37,26 @@ fetch("https://around-api.es.tripleten-services.com/v1/users/me", {
     userInfo.setAvatar(result.avatar);
   });
 
+fetch("https://around-api.es.tripleten-services.com/v1/cards/", {
+  headers: {
+    authorization: token,
+  },
+})
+  .then((res) => res.json())
+  .then((result) => {
+    renderer({result[0].name, result[0].link});
+  });
+
 const picturePopup = new PopupWithImage(imgPopupSelector);
 //Renderizado inicial de las 6 cartas
 const sectionCards = new Section(
   {
-    items: initialCards,
+    items: [],
     renderer,
   },
   placesContainerSelector
 );
-sectionCards.renderItems();
+// sectionCards.renderItems();
 
 function renderer({ name, link }) {
   const card = new Card(
