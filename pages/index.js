@@ -44,7 +44,7 @@ fetch("https://around-api.es.tripleten-services.com/v1/cards/", {
 })
   .then((res) => res.json())
   .then((result) => {
-    renderer({result[0].name, result[0].link});
+    renderer(result[0]);
   });
 
 const picturePopup = new PopupWithImage(imgPopupSelector);
@@ -100,7 +100,21 @@ const profilePopup = new PopupWithForm(
   {
     handler: () => {
       const inputs = profilePopup._getInputValues();
-      userInfo.setUserInfo(inputs[0].value, inputs[1].value);
+      fetch("https://around-api.es.tripleten-services.com/v1/users/me", {
+        method: "PATCH",
+        headers: {
+          authorization: token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: inputs[0].value,
+          about: inputs[1].value,
+        }),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          userInfo.setUserInfo(result.name, result.about);
+        });
     },
   },
   profileFormSelector
