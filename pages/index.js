@@ -44,7 +44,16 @@ fetch("https://around-api.es.tripleten-services.com/v1/cards/", {
 })
   .then((res) => res.json())
   .then((result) => {
-    renderer(result[0]);
+    console.log(result);
+    const otherSectionCards = new Section(
+  {
+    items: result,
+    renderer,
+  },
+  placesContainerSelector
+);
+otherSectionCards.renderItems();
+    
   });
 
 const picturePopup = new PopupWithImage(imgPopupSelector);
@@ -80,11 +89,30 @@ const addCardPopup = new PopupWithForm(
   {
     handler: () => {
       const inputs = addCardPopup._getInputValues();
-      const newCard = new Card(
-        { name: inputs[0].value, link: inputs[1].value, handleCardClick },
+      fetch("https://around-api.es.tripleten-services.com/v1/cards/", {
+        method:"POST",
+        headers: {
+          authorization: token,
+          "Content-Type": "application/json"
+        },
+        body : JSON.stringify({
+          name: inputs[0].value,
+          link: inputs[1].value
+        })
+      }).then((res) => res.json())
+       .then((result) => {
+const newCard = new Card(
+        { name: result.name, link: result.link, handleCardClick },
         cardTemplate
       );
       sectionCards.addItem(newCard.createCard());
+       // renderer(result[0]);
+       });
+      // const newCard = new Card(
+      //   { name: inputs[0].value, link: inputs[1].value, handleCardClick },
+      //   cardTemplate
+      // );
+      // sectionCards.addItem(newCard.createCard());
     },
   },
   addPopupSelector

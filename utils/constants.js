@@ -36,3 +36,30 @@ export const userNameSelector = ".info__name";
 export const userAboutSelector = ".info__about";
 export const userAvatarSelector = ".profile__picture";
 export const token = "4d007ff4-1f4e-4b6a-9dba-c0d8b800d5cd";
+
+//  const initialCards = [Add commentMore actions
+//   {
+//     name: "Parque Ecoturístico Dos Aguas",
+//     link: "./images/Dos_Aguas.jpeg",
+//   },
+//   {
+//     name: "Lago Louise",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
+//   },
+//   {
+//     name: "Montañas Calvas",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
+//   },
+//   {
+//     name: "Latemar",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
+//   },
+//   {
+//     name: "Parque Nacional de la Vanoise",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
+//   },
+//   {
+//     name: "Lago di Braies",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
+//   },
+// ];
