@@ -2,7 +2,6 @@ import Card from "../components/Card.js";
 import * as utils from "../utils/utils.js";
 import FormValidator from "../components/FormValidator.js";
 import {
-  initialCards,
   placesContainerSelector,
   cardTemplate,
   addPopupSelector,
@@ -46,14 +45,13 @@ fetch("https://around-api.es.tripleten-services.com/v1/cards/", {
   .then((result) => {
     console.log(result);
     const otherSectionCards = new Section(
-  {
-    items: result,
-    renderer,
-  },
-  placesContainerSelector
-);
-otherSectionCards.renderItems();
-    
+      {
+        items: result,
+        renderer,
+      },
+      placesContainerSelector
+    );
+    otherSectionCards.renderItems();
   });
 
 const picturePopup = new PopupWithImage(imgPopupSelector);
@@ -67,15 +65,8 @@ const sectionCards = new Section(
 );
 // sectionCards.renderItems();
 
-function renderer({ name, link }) {
-  const card = new Card(
-    {
-      name,
-      link,
-      handleCardClick,
-    },
-    cardTemplate
-  );
+function renderer(result) {
+  const card = new Card(result, handleCardClick, cardTemplate);
   const cardElement = card.createCard();
   sectionCards.addItem(cardElement);
 }
@@ -90,29 +81,22 @@ const addCardPopup = new PopupWithForm(
     handler: () => {
       const inputs = addCardPopup._getInputValues();
       fetch("https://around-api.es.tripleten-services.com/v1/cards/", {
-        method:"POST",
+        method: "POST",
         headers: {
           authorization: token,
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body : JSON.stringify({
+        body: JSON.stringify({
           name: inputs[0].value,
-          link: inputs[1].value
-        })
-      }).then((res) => res.json())
-       .then((result) => {
-const newCard = new Card(
-        { name: result.name, link: result.link, handleCardClick },
-        cardTemplate
-      );
-      sectionCards.addItem(newCard.createCard());
-       // renderer(result[0]);
-       });
-      // const newCard = new Card(
-      //   { name: inputs[0].value, link: inputs[1].value, handleCardClick },
-      //   cardTemplate
-      // );
-      // sectionCards.addItem(newCard.createCard());
+          link: inputs[1].value,
+        }),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          const newCard = new Card(result, handleCardClick, cardTemplate);
+          sectionCards.addItem(newCard.createCard());
+          // renderer(result[0]);
+        });
     },
   },
   addPopupSelector
