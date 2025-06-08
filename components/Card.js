@@ -12,6 +12,7 @@ export default class Card {
     this._handleCardClick = handleCardClick;
     this._pictureHandler = this._pictureHandler.bind(this);
     this._likeButtonHandler = this._likeButtonHandler.bind(this);
+    this._removeButtonHandler = this._removeButtonHandler.bind(this);
   }
 
   createCard() {
@@ -50,6 +51,20 @@ export default class Card {
 
   _removeButtonHandler(evt) {
     evt.target.closest(".card").remove();
+    fetch(
+      `https://around-api.es.tripleten-services.com/v1/cards/${this._id}/`,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: token,
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      });
   }
 
   _likeButtonHandler(evt) {
@@ -65,11 +80,11 @@ export default class Card {
             "Content-Type": "application/json",
           },
         }
-      )
-        .then((res) => res.json())
-        .then((result) => {
-          console.log(result);
-        });
+      );
+      // .then((res) => res.json())
+      // .then((result) => {
+      //   console.log(result);
+      // });
     } else {
       fetch(
         `https://around-api.es.tripleten-services.com/v1/cards/${this._id}/likes`,
@@ -80,11 +95,7 @@ export default class Card {
             "Content-Type": "application/json",
           },
         }
-      )
-        .then((res) => res.json())
-        .then((result) => {
-          console.log(result);
-        });
+      );
     }
   }
 }
