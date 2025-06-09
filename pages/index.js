@@ -1,5 +1,4 @@
 import Card from "../components/Card.js";
-import * as utils from "../utils/utils.js";
 import FormValidator from "../components/FormValidator.js";
 import {
   placesContainerSelector,
@@ -16,6 +15,7 @@ import Section from "../layers/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 //https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg
 const editButton = document.querySelector(".info__edit-button");
@@ -138,9 +138,16 @@ editButton.addEventListener("click", () => {
 });
 
 addButton.addEventListener("click", function () {
-  addCardPopup.open();
+  // addCardPopup.open();
+  deletePopup.open();
 });
 
+//eliminar popup
+const deletePopup = new PopupWithConfirmation(".popup_confirmation");
+
+// function handleDeletePopup() {
+//   deletePopup.open();
+// }
 ////  Formularios
 // enableValidation();
 const forms = document.querySelectorAll(".form");
