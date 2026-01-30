@@ -107,7 +107,7 @@
         </form>
       </div>
       <div class="popup_img popup">
-        <div class="popup__div">
+        <div class="popup__img-div">
           <button
             class="popup__close-button popup__close-img"
             type="button"
@@ -117,16 +117,17 @@
         </div>
       </div>
       <div class="popup_confirmation popup">
-        <div class="popup__div">
-          <h2 class="form__title">Estás seguro?</h2>
-          <button
+        <form class="popup__form form" novalidate>
+           <button
             class="popup__close-button popup__close-img"
             type="button"
           ></button>
+          <h2 class="form__title">Estás seguro?</h2>
+        
           <button class="form__submit-button create-button" type="submit">
             Si
           </button>
-        </div>
+        </form>
       </div>
       <template id="card-template">
         <div class="card">

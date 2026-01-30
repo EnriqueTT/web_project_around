@@ -66,7 +66,7 @@ const sectionCards = new Section(
 // sectionCards.renderItems();
 
 function renderer(result) {
-  const card = new Card(result, handleCardClick, cardTemplate);
+  const card = new Card(result, handleCardClick,handleDeleteButton, cardTemplate);
   const cardElement = card.createCard();
   sectionCards.addItem(cardElement);
 }
@@ -93,7 +93,7 @@ const addCardPopup = new PopupWithForm(
       })
         .then((res) => res.json())
         .then((result) => {
-          const newCard = new Card(result, handleCardClick, cardTemplate);
+          const newCard = new Card(result, handleCardClick,handleDeleteButton, cardTemplate);
           sectionCards.addItem(newCard.createCard());
           // renderer(result[0]);
         });
@@ -138,16 +138,17 @@ editButton.addEventListener("click", () => {
 });
 
 addButton.addEventListener("click", function () {
-  // addCardPopup.open();
-  deletePopup.open();
+  addCardPopup.open();
+  // deletePopup.open();
 });
 
 //eliminar popup
 const deletePopup = new PopupWithConfirmation(".popup_confirmation");
 
-// function handleDeletePopup() {
-//   deletePopup.open();
-// }
+function handleDeleteButton() {
+ deletePopup.open();
+};
+
 ////  Formularios
 // enableValidation();
 const forms = document.querySelectorAll(".form");

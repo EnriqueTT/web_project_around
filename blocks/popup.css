@@ -28,9 +28,15 @@
   background: center / contain no-repeat url("../images/Close_Icon.svg");
 }
 
-.popup__div {
+.popup__img-div {
   position: relative;
   max-width: 816px;
+}
+
+.popup__confirmation-div {
+  position: relative;
+  max-width: 430px;
+  background-color: white;
 }
 
 .popup__picture {

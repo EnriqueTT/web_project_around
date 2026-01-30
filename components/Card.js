@@ -1,6 +1,6 @@
 import { token } from "../utils/constants.js";
 export default class Card {
-  constructor({ name, link, isLiked, _id }, handleCardClick, templateSelector) {
+  constructor({ name, link, isLiked, _id }, handleCardClick, handleDeleteButton, templateSelector) {
     this._content = document
       .querySelector(templateSelector)
       .content.querySelector(".card")
@@ -9,6 +9,7 @@ export default class Card {
     this._imgSrc = link;
     this._isLiked = isLiked;
     this._id = _id;
+    this._deleteButton = handleDeleteButton;
     this._handleCardClick = handleCardClick;
     this._pictureHandler = this._pictureHandler.bind(this);
     this._likeButtonHandler = this._likeButtonHandler.bind(this);
@@ -49,22 +50,24 @@ export default class Card {
     this._handleCardClick({ name: this._text, link: this._imgSrc });
   }
 
-  _removeButtonHandler(evt) {
-    evt.target.closest(".card").remove();
-    fetch(
-      `https://around-api.es.tripleten-services.com/v1/cards/${this._id}/`,
-      {
-        method: "DELETE",
-        headers: {
-          authorization: token,
-          "Content-Type": "application/json",
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-      });
+  _removeButtonHandler() {
+    this._deleteButton(this._content);
+    // 
+    // fetch(
+    //   `https://around-api.es.tripleten-services.com/v1/cards/${this._id}/`,
+    //   {
+    //     method: "DELETE",
+    //     headers: {
+    //       authorization: token,
+    //       "Content-Type": "application/json",
+    //     },
+    //   }
+    // )
+    //   .then((res) => res.json())
+    //   .then((result) => {
+      // evt.target.closest(".card").remove();
+    //     console.log(result);
+    //   });
   }
 
   _likeButtonHandler(evt) {
@@ -80,11 +83,14 @@ export default class Card {
             "Content-Type": "application/json",
           },
         }
-      );
-      // .then((res) => res.json())
-      // .then((result) => {
-      //   console.log(result);
-      // });
+      )
+      .then(() => {
+        console.log("like registrado");
+      })
+      .catch(() => {
+        console.log("No se registra ellike" );
+      });
+        
     } else {
       fetch(
         `https://around-api.es.tripleten-services.com/v1/cards/${this._id}/likes`,
@@ -95,7 +101,11 @@ export default class Card {
             "Content-Type": "application/json",
           },
         }
-      );
+      ) .then(() => {
+        console.log("Dis-like registrado");
+      }) .catch(() => {
+        console.log("No se registra el dis-like");
+      });
     }
   }
 }
