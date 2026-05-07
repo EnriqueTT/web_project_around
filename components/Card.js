@@ -116,8 +116,4 @@ export default class Card {
         });
     }
   }
-
-  getId() {
-    return this._id;
-  }
 }
