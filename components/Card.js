@@ -1,6 +1,11 @@
 import { token } from "../utils/constants.js";
 export default class Card {
-  constructor({ name, link, isLiked, _id }, handleCardClick, handleDeleteButton, templateSelector) {
+  constructor(
+    { name, link, isLiked, _id },
+    handleCardClick,
+    handleDeleteButton,
+    templateSelector,
+  ) {
     this._content = document
       .querySelector(templateSelector)
       .content.querySelector(".card")
@@ -51,8 +56,10 @@ export default class Card {
   }
 
   _removeButtonHandler() {
-    this._deleteButton(this._content);
-    // 
+    this._deleteButton(this._content, this._id);
+    //
+    //     -  _removeButtonHandler(evt) {
+    // -    evt.target.closest(".card").remove();
     // fetch(
     //   `https://around-api.es.tripleten-services.com/v1/cards/${this._id}/`,
     //   {
@@ -65,7 +72,7 @@ export default class Card {
     // )
     //   .then((res) => res.json())
     //   .then((result) => {
-      // evt.target.closest(".card").remove();
+    // evt.target.closest(".card").remove();
     //     console.log(result);
     //   });
   }
@@ -82,15 +89,14 @@ export default class Card {
             authorization: token,
             "Content-Type": "application/json",
           },
-        }
+        },
       )
-      .then(() => {
-        console.log("like registrado");
-      })
-      .catch(() => {
-        console.log("No se registra ellike" );
-      });
-        
+        .then(() => {
+          console.log("like registrado");
+        })
+        .catch(() => {
+          console.log("No se registra ellike");
+        });
     } else {
       fetch(
         `https://around-api.es.tripleten-services.com/v1/cards/${this._id}/likes`,
@@ -100,12 +106,18 @@ export default class Card {
             authorization: token,
             "Content-Type": "application/json",
           },
-        }
-      ) .then(() => {
-        console.log("Dis-like registrado");
-      }) .catch(() => {
-        console.log("No se registra el dis-like");
-      });
+        },
+      )
+        .then(() => {
+          console.log("Dis-like registrado");
+        })
+        .catch(() => {
+          console.log("No se registra el dis-like");
+        });
     }
+  }
+
+  getId() {
+    return this._id;
   }
 }

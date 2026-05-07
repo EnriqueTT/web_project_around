@@ -12,7 +12,6 @@ export default class PopupWithForm extends Popup {
 
   _getInputValues() {
     //recopila todos los datos de entrada del formulario
-
     return this._inputs;
   }
 

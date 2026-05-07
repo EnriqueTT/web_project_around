@@ -49,8 +49,10 @@ export default class FormValidator {
   }
 
   _disableSubmitButton() {
-    this._button.classList.add("form__submit-button_gray");
-    this._button.setAttribute("disabled", "");
+    if (this._inputs.length != 0) {
+      this._button.classList.add("form__submit-button_gray");
+      this._button.setAttribute("disabled", "");
+    }
   }
 
   _enableSubmitButton() {
@@ -96,7 +98,7 @@ export default class FormValidator {
   _toggleMessage() {
     this._inputs.forEach((input) => {
       const errorMessage = this._structure.querySelector(
-        `#${input.id}__input-error`
+        `#${input.id}__input-error`,
       );
       if (!input.validity.valid) {
         input.classList.add("form__input-error_color");

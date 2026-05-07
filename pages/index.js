@@ -5,6 +5,7 @@ import {
   cardTemplate,
   addPopupSelector,
   imgPopupSelector,
+  confirmPopupSelector,
   profileFormSelector,
   userNameSelector,
   userAboutSelector,
@@ -17,7 +18,6 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
-//https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg
 const editButton = document.querySelector(".info__edit-button");
 const profileName = document.querySelector(".info__name");
 const profileAbout = document.querySelector(".info__about");
@@ -49,7 +49,7 @@ fetch("https://around-api.es.tripleten-services.com/v1/cards/", {
         items: result,
         renderer,
       },
-      placesContainerSelector
+      placesContainerSelector,
     );
     otherSectionCards.renderItems();
   });
@@ -61,12 +61,17 @@ const sectionCards = new Section(
     items: [],
     renderer,
   },
-  placesContainerSelector
+  placesContainerSelector,
 );
 // sectionCards.renderItems();
 
 function renderer(result) {
-  const card = new Card(result, handleCardClick,handleDeleteButton, cardTemplate);
+  const card = new Card(
+    result,
+    handleCardClick,
+    handleDeleteButton,
+    cardTemplate,
+  );
   const cardElement = card.createCard();
   sectionCards.addItem(cardElement);
 }
@@ -93,13 +98,18 @@ const addCardPopup = new PopupWithForm(
       })
         .then((res) => res.json())
         .then((result) => {
-          const newCard = new Card(result, handleCardClick,handleDeleteButton, cardTemplate);
+          const newCard = new Card(
+            result,
+            handleCardClick,
+            handleDeleteButton,
+            cardTemplate,
+          );
           sectionCards.addItem(newCard.createCard());
           // renderer(result[0]);
         });
     },
   },
-  addPopupSelector
+  addPopupSelector,
 );
 
 // Editor de perfil
@@ -129,7 +139,7 @@ const profilePopup = new PopupWithForm(
         });
     },
   },
-  profileFormSelector
+  profileFormSelector,
 );
 
 editButton.addEventListener("click", () => {
@@ -143,11 +153,36 @@ addButton.addEventListener("click", function () {
 });
 
 //eliminar popup
-const deletePopup = new PopupWithConfirmation(".popup_confirmation");
+const deletePopup = new PopupWithConfirmation(
+  {
+    handler: (target, id) => {
+      fetch(`https://around-api.es.tripleten-services.com/v1/cards/${id}`, {
+        method: "DELETE",
+        headers: {
+          authorization: token,
+        },
+      })
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+          return Promise.reject(
+            `No se pudo eliminar la publicación por un : Error ${res.status}`,
+          );
+        })
+        .then((json) => {
+          target.closest(".card").remove();
+          console.log(json);
+        })
+        .catch((error) => console.log(error));
+    },
+  },
+  confirmPopupSelector,
+);
 
-function handleDeleteButton() {
- deletePopup.open();
-};
+function handleDeleteButton(item, id) {
+  deletePopup.open(item, id);
+}
 
 ////  Formularios
 // enableValidation();
@@ -168,7 +203,7 @@ forms.forEach((form) => {
   };
   const formObject = new FormValidator(
     obj,
-    !form.classList.contains("add-form")
+    !form.classList.contains("add-form"),
   );
   formObject.enableValidation();
 });
