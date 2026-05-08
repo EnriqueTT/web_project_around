@@ -78,9 +78,9 @@ export default class Card {
   }
 
   _likeButtonHandler(evt) {
-    evt.target.classList.toggle("card__like_black");
-    this._isLiked ? (this._isLiked = false) : (this._isLiked = true);
-    if (this._isLiked) {
+    // this._isLiked ? (this._isLiked = false) : (this._isLiked = true);
+    // this._isLiked = !this._isLiked;
+    if (!this._isLiked) {
       fetch(
         `https://around-api.es.tripleten-services.com/v1/cards/${this._id}/likes`,
         {
@@ -91,11 +91,18 @@ export default class Card {
           },
         },
       )
-        .then(() => {
-          console.log("like registrado");
+        .then((res) =>
+          res.ok
+            ? res.json()
+            : Promise.reject(`Error con botón de like:  Error ${res.status}`),
+        )
+        .then((res) => {
+          evt.target.classList.toggle("card__like_black");
+          this._isLiked = res.isLiked;
         })
-        .catch(() => {
-          console.log("No se registra ellike");
+        .catch((err) => {
+          console.log("No se registra el like");
+          console.log(err);
         });
     } else {
       fetch(
@@ -108,11 +115,18 @@ export default class Card {
           },
         },
       )
-        .then(() => {
-          console.log("Dis-like registrado");
+        .then((res) =>
+          res.ok
+            ? res.json()
+            : Promise.reject(`Error con botón de like:  Error ${res.status}`),
+        )
+        .then((res) => {
+          evt.target.classList.toggle("card__like_black");
+          this._isLiked = res.isLiked;
         })
-        .catch(() => {
+        .catch((err) => {
           console.log("No se registra el dis-like");
+          console.log(err);
         });
     }
   }
