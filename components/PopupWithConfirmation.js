@@ -10,10 +10,10 @@ export default class PopupWithConfirmation extends Popup {
     // this._setEvents();
   }
 
-  open(card, id) {
+  open(id, element) {
     super.open();
-    this._actualCard = card;
     this._id = id;
+    this._element = element;
   }
 
   // _setEvents() {
@@ -25,9 +25,7 @@ export default class PopupWithConfirmation extends Popup {
   //Nueva implementación
   _submitEvent(evt) {
     evt.preventDefault();
-    console.log(this._actualCard.closest(".card"));
-
-    this.handler(this._actualCard, this._id);
+    this.handler(this._id, this._element);
     this.close();
   }
 

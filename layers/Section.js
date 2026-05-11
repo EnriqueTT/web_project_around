@@ -17,6 +17,14 @@ export default class Section {
     this._container.append(element);
   }
 
+  setItems(items) {
+    this._items = items;
+  }
+
+  removeItem(item) {
+    item.remove();
+  }
+
   clear() {
     this._container.innerHTML = "";
   }

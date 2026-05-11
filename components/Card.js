@@ -14,8 +14,9 @@ export default class Card {
     this._imgSrc = link;
     this._isLiked = isLiked;
     this._id = _id;
-    this._deleteButton = handleDeleteButton;
+    this._handleDeleteButton = handleDeleteButton;
     this._handleCardClick = handleCardClick;
+    this._handleLikeButton = "";
     this._pictureHandler = this._pictureHandler.bind(this);
     this._likeButtonHandler = this._likeButtonHandler.bind(this);
     this._removeButtonHandler = this._removeButtonHandler.bind(this);
@@ -55,26 +56,8 @@ export default class Card {
     this._handleCardClick({ name: this._text, link: this._imgSrc });
   }
 
-  _removeButtonHandler() {
-    this._deleteButton(this._content, this._id);
-    //
-    //     -  _removeButtonHandler(evt) {
-    // -    evt.target.closest(".card").remove();
-    // fetch(
-    //   `https://around-api.es.tripleten-services.com/v1/cards/${this._id}/`,
-    //   {
-    //     method: "DELETE",
-    //     headers: {
-    //       authorization: token,
-    //       "Content-Type": "application/json",
-    //     },
-    //   }
-    // )
-    //   .then((res) => res.json())
-    //   .then((result) => {
-    // evt.target.closest(".card").remove();
-    //     console.log(result);
-    //   });
+  _removeButtonHandler(evt) {
+    this._handleDeleteButton(this._id, evt.target.closest(".card"));
   }
 
   _likeButtonHandler(evt) {

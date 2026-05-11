@@ -44,17 +44,12 @@ fetch("https://around-api.es.tripleten-services.com/v1/cards/", {
   .then((res) => res.json())
   .then((result) => {
     console.log(result);
-    const otherSectionCards = new Section(
-      {
-        items: result,
-        renderer,
-      },
-      placesContainerSelector,
-    );
-    otherSectionCards.renderItems();
+    sectionCards.setItems(result);
+    sectionCards.renderItems();
   });
 
 const picturePopup = new PopupWithImage(imgPopupSelector);
+
 //Renderizado inicial de las 6 cartas
 const sectionCards = new Section(
   {
@@ -65,9 +60,9 @@ const sectionCards = new Section(
 );
 // sectionCards.renderItems();
 
-function renderer(result) {
+function renderer(item) {
   const card = new Card(
-    result,
+    item,
     handleCardClick,
     handleDeleteButton,
     cardTemplate,
@@ -78,6 +73,10 @@ function renderer(result) {
 
 function handleCardClick(item) {
   picturePopup.open(item);
+}
+
+function handleDeleteButton(id, element) {
+  deletePopup.open(id, element);
 }
 
 // Formulario de cartas
@@ -118,6 +117,7 @@ const userInfo = new UserInfo({
   job: userAboutSelector,
   avatar: userAvatarSelector,
 });
+
 const profilePopup = new PopupWithForm(
   {
     handler: () => {
@@ -142,20 +142,10 @@ const profilePopup = new PopupWithForm(
   profileFormSelector,
 );
 
-editButton.addEventListener("click", () => {
-  profilePopup.open();
-  profilePopup.setInputValues(userInfo.getUserInfo());
-});
-
-addButton.addEventListener("click", function () {
-  addCardPopup.open();
-  // deletePopup.open();
-});
-
 //eliminar popup
 const deletePopup = new PopupWithConfirmation(
   {
-    handler: (target, id) => {
+    handler: (id, element) => {
       fetch(`https://around-api.es.tripleten-services.com/v1/cards/${id}`, {
         method: "DELETE",
         headers: {
@@ -171,7 +161,8 @@ const deletePopup = new PopupWithConfirmation(
           );
         })
         .then((json) => {
-          target.closest(".card").remove();
+          // target.closest(".card").remove();
+          sectionCards.removeItem(element);
           console.log(json);
         })
         .catch((error) => console.log(error));
@@ -180,9 +171,15 @@ const deletePopup = new PopupWithConfirmation(
   confirmPopupSelector,
 );
 
-function handleDeleteButton(item, id) {
-  deletePopup.open(item, id);
-}
+editButton.addEventListener("click", () => {
+  profilePopup.open();
+  profilePopup.setInputValues(userInfo.getUserInfo());
+});
+
+addButton.addEventListener("click", function () {
+  addCardPopup.open();
+  // deletePopup.open();
+});
 
 ////  Formularios
 // enableValidation();
