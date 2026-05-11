@@ -1,9 +1,9 @@
-import { token } from "../utils/constants.js";
 export default class Card {
   constructor(
     { name, link, isLiked, _id },
     handleCardClick,
     handleDeleteButton,
+    handleLikeButton,
     templateSelector,
   ) {
     this._content = document
@@ -16,7 +16,7 @@ export default class Card {
     this._id = _id;
     this._handleDeleteButton = handleDeleteButton;
     this._handleCardClick = handleCardClick;
-    this._handleLikeButton = "";
+    this._handleLikeButton = handleLikeButton;
     this._pictureHandler = this._pictureHandler.bind(this);
     this._likeButtonHandler = this._likeButtonHandler.bind(this);
     this._removeButtonHandler = this._removeButtonHandler.bind(this);
@@ -61,56 +61,15 @@ export default class Card {
   }
 
   _likeButtonHandler(evt) {
-    // this._isLiked ? (this._isLiked = false) : (this._isLiked = true);
-    // this._isLiked = !this._isLiked;
-    if (!this._isLiked) {
-      fetch(
-        `https://around-api.es.tripleten-services.com/v1/cards/${this._id}/likes`,
-        {
-          method: "PUT",
-          headers: {
-            authorization: token,
-            "Content-Type": "application/json",
-          },
-        },
-      )
-        .then((res) =>
-          res.ok
-            ? res.json()
-            : Promise.reject(`Error con botón de like:  Error ${res.status}`),
-        )
-        .then((res) => {
-          evt.target.classList.toggle("card__like_black");
-          this._isLiked = res.isLiked;
-        })
-        .catch((err) => {
-          console.log("No se registra el like");
-          console.log(err);
-        });
-    } else {
-      fetch(
-        `https://around-api.es.tripleten-services.com/v1/cards/${this._id}/likes`,
-        {
-          method: "DELETE",
-          headers: {
-            authorization: token,
-            "Content-Type": "application/json",
-          },
-        },
-      )
-        .then((res) =>
-          res.ok
-            ? res.json()
-            : Promise.reject(`Error con botón de like:  Error ${res.status}`),
-        )
-        .then((res) => {
-          evt.target.classList.toggle("card__like_black");
-          this._isLiked = res.isLiked;
-        })
-        .catch((err) => {
-          console.log("No se registra el dis-like");
-          console.log(err);
-        });
+    //   evt.target.classList.toggle("card__like_black");
+    if (
+      this._handleLikeButton({
+        isLiked: !this._isLiked,
+        id: this._id,
+      }) != this._isLiked
+    ) {
+      this._isLiked = !this._isLiked;
+      evt.target.classList.toggle("card__like_black");
     }
   }
 }

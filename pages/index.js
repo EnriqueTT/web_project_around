@@ -65,10 +65,58 @@ function renderer(item) {
     item,
     handleCardClick,
     handleDeleteButton,
+    handleLikeButton,
     cardTemplate,
   );
   const cardElement = card.createCard();
   sectionCards.addItem(cardElement);
+}
+
+function handleLikeButton({ isLiked, id }) {
+  const method = isLiked ? "PUT" : "DELETE";
+
+  if (isLiked) {
+    fetch(`https://around-api.es.tripleten-services.com/v1/cards/${id}/likes`, {
+      method: "PUT",
+      headers: {
+        authorization: token,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) =>
+        res.ok
+          ? res.json()
+          : Promise.reject(`Error con botón de like:  Error ${res.status}`),
+      )
+      .then((res) => {
+        isLiked = res.isLiked;
+      })
+      .catch((err) => {
+        console.log("No se registra el like");
+        console.log(err);
+      });
+  } else {
+    fetch(`https://around-api.es.tripleten-services.com/v1/cards/${id}/likes`, {
+      method: "DELETE",
+      headers: {
+        authorization: token,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) =>
+        res.ok
+          ? res.json()
+          : Promise.reject(`Error con botón de like:  Error ${res.status}`),
+      )
+      .then((res) => {
+        isLiked = res.isLiked;
+      })
+      .catch((err) => {
+        console.log("No se registra el dis-like");
+        console.log(err);
+      });
+  }
+  return isLiked;
 }
 
 function handleCardClick(item) {
@@ -101,6 +149,7 @@ const addCardPopup = new PopupWithForm(
             result,
             handleCardClick,
             handleDeleteButton,
+            handleLikeButton,
             cardTemplate,
           );
           sectionCards.addItem(newCard.createCard());
