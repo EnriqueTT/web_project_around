@@ -127,6 +127,14 @@ function handleDeleteButton(id, element) {
   deletePopup.open(id, element);
 }
 
+//
+const editPhotoPopup = PopupWithForm(
+  {
+    handler: () => {},
+  },
+  somePopupSelector,
+);
+
 // Formulario de cartas
 const addCardPopup = new PopupWithForm(
   {
