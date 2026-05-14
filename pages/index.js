@@ -22,6 +22,7 @@ const editButton = document.querySelector(".info__edit-button");
 const profileName = document.querySelector(".info__name");
 const profileAbout = document.querySelector(".info__about");
 const addButton = document.querySelector(".profile__add-button");
+const profilePicture = document.querySelector(".profile__picture");
 const addPopUp = document.querySelector(".popup_add");
 const addForm = document.querySelector(".add-form");
 
@@ -236,6 +237,11 @@ editButton.addEventListener("click", () => {
 addButton.addEventListener("click", function () {
   addCardPopup.open();
   // deletePopup.open();
+});
+
+profilePicture.addEventListener("click", function () {
+  // addCardPopup.open();
+  otroPopup.open();
 });
 
 ////  Formularios
