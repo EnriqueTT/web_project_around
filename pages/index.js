@@ -12,6 +12,8 @@ import {
   userAvatarSelector,
   token,
 } from "../utils/constants.js";
+
+import Api from "../components/Api.js";
 import Section from "../layers/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
@@ -25,32 +27,27 @@ const addButton = document.querySelector(".profile__add-button");
 const addPopUp = document.querySelector(".popup_add");
 const addForm = document.querySelector(".add-form");
 
-fetch("https://around-api.es.tripleten-services.com/v1/users/me", {
+const api = new Api({
+  url: "https://around-api.es.tripleten-services.com/v1/",
   headers: {
     authorization: token,
+    "Content-Type": "application/json",
   },
-})
-  .then((res) => res.json())
-  .then((result) => {
-    userInfo.setUserInfo(result.name, result.about);
-    userInfo.setAvatar(result.avatar);
-  });
+});
 
-fetch("https://around-api.es.tripleten-services.com/v1/cards/", {
-  headers: {
-    authorization: token,
-  },
-})
-  .then((res) => res.json())
-  .then((result) => {
-    console.log(result);
-    sectionCards.setItems(result);
-    sectionCards.renderItems();
-  });
+api.getUserInfo().then((result) => {
+  userInfo.setUserInfo(result.name, result.about);
+  userInfo.setAvatar(result.avatar);
+});
+
+api.getInitialCards().then((result) => {
+  console.log(result);
+  sectionCards.setItems(result);
+  sectionCards.renderItems();
+});
 
 const picturePopup = new PopupWithImage(imgPopupSelector);
 
-//Renderizado inicial de las 6 cartas
 const sectionCards = new Section(
   {
     items: [],
@@ -74,7 +71,6 @@ function renderer(item) {
 
 function handleLikeButton({ isLiked, id }) {
   const method = isLiked ? "PUT" : "DELETE";
-
   if (isLiked) {
     fetch(`https://around-api.es.tripleten-services.com/v1/cards/${id}/likes`, {
       method: "PUT",
@@ -227,8 +223,12 @@ editButton.addEventListener("click", () => {
 
 addButton.addEventListener("click", function () {
   addCardPopup.open();
-  // deletePopup.open();
 });
+
+// editphoto.addEventListener("click", function () {
+//   addCardPopup.open();
+//   otroPopup.open();
+// });
 
 ////  Formularios
 // enableValidation();
