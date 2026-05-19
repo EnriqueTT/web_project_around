@@ -58,4 +58,40 @@ export default class Api {
         : Promise.reject(`Error con botón de like:  Error ${res.status}`),
     );
   }
+
+  addCard(inputs) {
+    return fetch(this._url + "cards/", {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify({
+        name: inputs[0].value,
+        link: inputs[1].value,
+      }),
+    }).then((res) => res.json());
+  }
+
+  deleteCard(id) {
+    return fetch(this._url + `cards/${id}`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(
+        `No se pudo eliminar la publicación por un : Error ${res.status}`,
+      );
+    });
+  }
+
+  patchUserInfo(userInfo) {
+    return fetch(this._url + "users/me", {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        name: userInfo[0].value,
+        about: userInfo[1].value,
+      }),
+    }).then((res) => res.json());
+  }
 }

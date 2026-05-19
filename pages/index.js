@@ -93,29 +93,17 @@ const addCardPopup = new PopupWithForm(
   {
     handler: () => {
       const inputs = addCardPopup._getInputValues();
-      fetch("https://around-api.es.tripleten-services.com/v1/cards/", {
-        method: "POST",
-        headers: {
-          authorization: token,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: inputs[0].value,
-          link: inputs[1].value,
-        }),
-      })
-        .then((res) => res.json())
-        .then((result) => {
-          const newCard = new Card(
-            result,
-            handleCardClick,
-            handleDeleteButton,
-            handleLikeButton,
-            cardTemplate,
-          );
-          sectionCards.addItem(newCard.createCard());
-          // renderer(result[0]);
-        });
+      api.addCard(inputs).then((result) => {
+        const newCard = new Card(
+          result,
+          handleCardClick,
+          handleDeleteButton,
+          handleLikeButton,
+          cardTemplate,
+        );
+        sectionCards.addItem(newCard.createCard());
+        // renderer(result[0]);
+      });
     },
   },
   addPopupSelector,
@@ -132,44 +120,20 @@ const profilePopup = new PopupWithForm(
   {
     handler: () => {
       const inputs = profilePopup._getInputValues();
-      fetch("https://around-api.es.tripleten-services.com/v1/users/me", {
-        method: "PATCH",
-        headers: {
-          authorization: token,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: inputs[0].value,
-          about: inputs[1].value,
-        }),
-      })
-        .then((res) => res.json())
-        .then((result) => {
-          userInfo.setUserInfo(result.name, result.about);
-        });
+      api.patchUserInfo(inputs).then((result) => {
+        userInfo.setUserInfo(result.name, result.about);
+      });
     },
   },
   profileFormSelector,
 );
 
-//eliminar popup
+//popup eliminar
 const deletePopup = new PopupWithConfirmation(
   {
     handler: (id, element) => {
-      fetch(`https://around-api.es.tripleten-services.com/v1/cards/${id}`, {
-        method: "DELETE",
-        headers: {
-          authorization: token,
-        },
-      })
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          }
-          return Promise.reject(
-            `No se pudo eliminar la publicación por un : Error ${res.status}`,
-          );
-        })
+      api
+        .deleteCard(id)
         .then((json) => {
           // target.closest(".card").remove();
           sectionCards.removeItem(element);
