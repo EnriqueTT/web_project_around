@@ -24,4 +24,38 @@ export default class Api {
       return Promise.reject(`Error: ${res.status}`);
     });
   }
+
+  setLike(id) {
+    return fetch(this._url + `cards/${id}/likes`, {
+      method: "PUT",
+      headers: this._headers,
+    }).then((res) =>
+      res.ok
+        ? res.json()
+        : Promise.reject(`Error con botón de like:  Error ${res.status}`),
+    );
+  }
+
+  deleteLike(id) {
+    return fetch(this._url + `cards/${id}/likes`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then((res) =>
+      res.ok
+        ? res.json()
+        : Promise.reject(`Error con botón de like:  Error ${res.status}`),
+    );
+  }
+
+  handleLike(id, isLiked) {
+    const method = isLiked ? "PUT" : "DELETE";
+    return fetch(this._url + `cards/${id}/likes`, {
+      method: method,
+      headers: this._headers,
+    }).then((res) =>
+      res.ok
+        ? res.json()
+        : Promise.reject(`Error con botón de like:  Error ${res.status}`),
+    );
+  }
 }

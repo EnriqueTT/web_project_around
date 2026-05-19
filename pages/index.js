@@ -55,7 +55,6 @@ const sectionCards = new Section(
   },
   placesContainerSelector,
 );
-// sectionCards.renderItems();
 
 function renderer(item) {
   const card = new Card(
@@ -70,48 +69,14 @@ function renderer(item) {
 }
 
 function handleLikeButton({ isLiked, id }) {
-  const method = isLiked ? "PUT" : "DELETE";
-  if (isLiked) {
-    fetch(`https://around-api.es.tripleten-services.com/v1/cards/${id}/likes`, {
-      method: "PUT",
-      headers: {
-        authorization: token,
-        "Content-Type": "application/json",
-      },
+  api
+    .handleLike(id, isLiked)
+    .then((res) => {
+      isLiked = res.isLiked;
     })
-      .then((res) =>
-        res.ok
-          ? res.json()
-          : Promise.reject(`Error con botón de like:  Error ${res.status}`),
-      )
-      .then((res) => {
-        isLiked = res.isLiked;
-      })
-      .catch((err) => {
-        console.log("No se registra el like");
-        console.log(err);
-      });
-  } else {
-    fetch(`https://around-api.es.tripleten-services.com/v1/cards/${id}/likes`, {
-      method: "DELETE",
-      headers: {
-        authorization: token,
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) =>
-        res.ok
-          ? res.json()
-          : Promise.reject(`Error con botón de like:  Error ${res.status}`),
-      )
-      .then((res) => {
-        isLiked = res.isLiked;
-      })
-      .catch((err) => {
-        console.log("No se registra el dis-like");
-        console.log(err);
-      });
-  }
+    .catch((err) => {
+      console.log(err);
+    });
   return isLiked;
 }
 
@@ -224,11 +189,6 @@ editButton.addEventListener("click", () => {
 addButton.addEventListener("click", function () {
   addCardPopup.open();
 });
-
-// editphoto.addEventListener("click", function () {
-//   addCardPopup.open();
-//   otroPopup.open();
-// });
 
 ////  Formularios
 // enableValidation();
