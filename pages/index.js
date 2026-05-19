@@ -244,6 +244,11 @@ profilePicture.addEventListener("click", function () {
   otroPopup.open();
 });
 
+// editphoto.addEventListener("click", function () {
+//   addCardPopup.open();
+//   otroPopup.open();
+// });
+
 ////  Formularios
 // enableValidation();
 const forms = document.querySelectorAll(".form");
