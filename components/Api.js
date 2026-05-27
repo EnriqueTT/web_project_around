@@ -11,7 +11,6 @@ export default class Api {
       if (res.ok) {
         return res.json();
       }
-      // si el servidor devuelve un error, rechaza el promise
       return Promise.reject(`Error: ${res.status}`);
     });
   }
@@ -93,5 +92,22 @@ export default class Api {
         about: userInfo[1].value,
       }),
     }).then((res) => res.json());
+  }
+
+  editUserPhoto(link) {
+    return fetch(this._url + "users/me/avatar", {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: link,
+      }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(
+        `No se pudo eliminar la publicación por un : Error ${res.status}`,
+      );
+    });
   }
 }
