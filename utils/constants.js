@@ -4,7 +4,7 @@ export const addPopupSelector = ".popup_add";
 export const confirmPopupSelector = ".popup_confirmation";
 export const imgPopupSelector = ".popup_img";
 export const profileFormSelector = ".popup";
-export const photoPopupselector = ".popup_edit-profile";
+export const photoPopupselector = ".popup_photo";
 export const formNameSelector = ".form__name";
 export const formAboutSelector = ".form__about";
 export const userNameSelector = ".info__name";
@@ -52,5 +52,9 @@ export const token = "4d007ff4-1f4e-4b6a-9dba-c0d8b800d5cd";
 //   {
 //     name: "Parque Nacional de la Vanoise",
 //     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
+//   },
+//   {
+//     name: "me",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/frontend-developer/common/avatar.jpg",
 //   }
 // ];

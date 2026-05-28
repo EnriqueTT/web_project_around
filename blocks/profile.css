@@ -30,6 +30,7 @@
 
 .profile__picture:hover {
   opacity: 50%;
+  border-radius: 50%;
 }
 
 .profile__add-button:hover {

@@ -94,7 +94,15 @@ function handleDeleteButton(id, element) {
 //
 const editPhotoPopup = new PopupWithForm(
   {
-    handler: () => {},
+    handler: () => {
+      const input = editPhotoPopup._getInputValues();
+      api
+        .editUserPhoto(input)
+        .then((json) => {
+          userInfo.setAvatar(json.avatar);
+        })
+        .catch((err) => console.log(err));
+    },
   },
   photoPopupselector,
 );

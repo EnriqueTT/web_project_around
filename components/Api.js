@@ -99,7 +99,7 @@ export default class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar: link,
+        avatar: link[0].value,
       }),
     }).then((res) => {
       if (res.ok) {
