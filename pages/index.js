@@ -6,6 +6,7 @@ import {
   addPopupSelector,
   imgPopupSelector,
   confirmPopupSelector,
+  photoPopupselector,
   profileFormSelector,
   userNameSelector,
   userAboutSelector,
@@ -25,6 +26,7 @@ const addButton = document.querySelector(".profile__add-button");
 const profilePicture = document.querySelector(".profile__picture");
 const addPopUp = document.querySelector(".popup_add");
 const addForm = document.querySelector(".add-form");
+// const photoPopup = document.querySelector("");
 
 fetch("https://around-api.es.tripleten-services.com/v1/users/me", {
   headers: {
@@ -129,11 +131,11 @@ function handleDeleteButton(id, element) {
 }
 
 //
-const editPhotoPopup = PopupWithForm(
+const editPhotoPopup = new PopupWithForm(
   {
     handler: () => {},
   },
-  somePopupSelector,
+  photoPopupselector,
 );
 
 // Formulario de cartas
@@ -241,13 +243,8 @@ addButton.addEventListener("click", function () {
 
 profilePicture.addEventListener("click", function () {
   // addCardPopup.open();
-  otroPopup.open();
+  editPhotoPopup.open();
 });
-
-// editphoto.addEventListener("click", function () {
-//   addCardPopup.open();
-//   otroPopup.open();
-// });
 
 ////  Formularios
 // enableValidation();

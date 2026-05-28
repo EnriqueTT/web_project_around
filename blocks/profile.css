@@ -9,6 +9,7 @@
   margin-right: 30px;
   max-width: 120px;
   max-height: 120px;
+  cursor: pointer;
 }
 
 .profile__info {
@@ -25,6 +26,10 @@
   border-radius: 2px;
   background: center no-repeat url("../images/mas.svg");
   cursor: pointer;
+}
+
+.profile__picture:hover {
+  opacity: 50%;
 }
 
 .profile__add-button:hover {

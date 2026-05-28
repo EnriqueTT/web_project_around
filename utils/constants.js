@@ -4,6 +4,7 @@ export const addPopupSelector = ".popup_add";
 export const confirmPopupSelector = ".popup_confirmation";
 export const imgPopupSelector = ".popup_img";
 export const profileFormSelector = ".popup";
+export const photoPopupselector = ".popup_edit-profile";
 export const formNameSelector = ".form__name";
 export const formAboutSelector = ".form__about";
 export const userNameSelector = ".info__name";
