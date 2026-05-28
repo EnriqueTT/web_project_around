@@ -32,6 +32,29 @@
         </div>
         <button class="profile__add-button"></button>
       </section>
+      <div class="popup_edit-profile popup">
+        <form class="popup__form form edit-form" novalidate>
+          <button class="popup__close-button" type="button"></button>
+          <h2 class="form__title">Cambiar Foto de perfil</h2>
+          <fieldset class="form__fieldset">
+            <label class="form__label">
+              <input
+                class="form__link form__input"
+                type="url"
+                id="link"
+                placeholder="Enlace a la imagen"
+                name="enlace"
+                aria-label="Enlace a la imagen"
+                required
+              />
+              <span class="form__input-error" id="link__input-error"></span>
+            </label>
+            <button class="form__submit-button create-button" type="submit">
+              Guardar
+            </button>
+          </fieldset>
+        </form>
+      </div>
       <div class="popup">
         <form class="popup__form form" novalidate>
           <button class="popup__close-button" type="button"></button>
